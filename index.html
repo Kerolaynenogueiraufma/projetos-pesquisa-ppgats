@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projetos de Pesquisa Ativos — PPGATS / UFMA</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap');
+
+  :root {
+    --verde-ufma: #1a5c38;
+    --verde-claro: #2d7a50;
+    --verde-bg: #f0f7f3;
+    --ouro: #c9922b;
+    --ouro-claro: #fdf6e8;
+    --cinza-900: #1a1a1a;
+    --cinza-700: #3d3d3d;
+    --cinza-500: #6b6b6b;
+    --cinza-300: #c4c4c4;
+    --cinza-100: #f5f5f5;
+    --branco: #ffffff;
+    --borda: #d4e2d9;
+    --erro: #c0392b;
+    --ok: #1a5c38;
+    --fonte-titulo: 'Source Serif 4', Georgia, serif;
+    --fonte-corpo: 'Inter', sans-serif;
+    --fonte-mono: 'JetBrains Mono', monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: var(--fonte-corpo);
+    background: var(--cinza-100);
+    color: var(--cinza-900);
+    min-height: 100vh;
+    line-height: 1.6;
+  }
+
+  /* CABEÇALHO */
+  .cabecalho {
+    background: var(--verde-ufma);
+    color: var(--branco);
+    padding: 0;
+  }
+  .cabecalho-topo {
+    background: rgba(0,0,0,0.2);
+    padding: 8px 40px;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .cabecalho-topo span { opacity: 0.75; }
+  .cabecalho-topo b { color: var(--ouro); }
+  .cabecalho-principal {
+    padding: 36px 40px 32px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 28px;
+    align-items: center;
+    max-width: 980px;
+    margin: 0 auto;
+  }
+  .brasao {
+    width: 72px; height: 72px;
+    background: rgba(255,255,255,0.12);
+    border-radius: 50%;
+    border: 2px solid rgba(255,255,255,0.25);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 32px;
+    flex-shrink: 0;
+  }
+  .cabecalho-texto h1 {
+    font-family: var(--fonte-titulo);
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+    margin-bottom: 4px;
+  }
+  .cabecalho-texto p {
+    font-size: 14px;
+    opacity: 0.75;
+    font-weight: 400;
+  }
+
+  /* BARRA DOURADA */
+  .barra-ouro {
+    height: 4px;
+    background: linear-gradient(90deg, var(--ouro) 0%, #e8b84b 50%, var(--ouro) 100%);
+  }
+
+  /* AVISO / INTRO */
+  .intro-box {
+    background: var(--ouro-claro);
+    border-left: 4px solid var(--ouro);
+    padding: 20px 28px;
+    margin: 36px auto;
+    max-width: 860px;
+    border-radius: 0 6px 6px 0;
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--cinza-700);
+  }
+  .intro-box strong { color: var(--cinza-900); }
+
+  /* PROGRESSO */
+  .progresso-wrap {
+    max-width: 860px;
+    margin: 0 auto 8px;
+    padding: 0 40px;
+  }
+  .progresso-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: var(--cinza-500);
+    margin-bottom: 6px;
+  }
+  .progresso-barra {
+    height: 6px;
+    background: var(--borda);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .progresso-fill {
+    height: 100%;
+    background: var(--verde-ufma);
+    border-radius: 3px;    transition: width 0.4s ease;
+  }
+
+  /* FORMULÁRIO PRINCIPAL */
+  .form-container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 40px 80px;
+  }
+
+  /* SEÇÕES */
+  .secao {
+    background: var(--branco);
+    border: 1px solid var(--borda);
+    border-radius: 8px;
+    margin-bottom: 28px;
+    overflow: hidden;
+  }
+  .secao-header {
+    background: var(--verde-bg);
+    border-bottom: 1px solid var(--borda);
+    padding: 16px 28px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .secao-num {
+    width: 30px; height: 30px;
+    background: var(--verde-ufma);
+    color: var(--branco);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px;
+    font-weight: 600;
+    flex-shrink: 0;
+    font-family: var(--fonte-mono);
+  }
+  .secao-titulo {
+    font-family: var(--fonte-titulo);
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--verde-ufma);
+  }
+  .secao-subtitulo {
+    font-size: 12px;
+    color: var(--cinza-500);
+    margin-top: 1px;
+  }
+  .secao-body {
+    padding: 28px;
+  }
+
+  /* CAMPOS */
+  .campo-grupo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+  .campo-grupo.full { grid-template-columns: 1fr; }
+  .campo-grupo.tres { grid-template-columns: 1fr 1fr 1fr; }
+
+  .campo {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .campo label {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--cinza-700);
+    letter-spacing: 0.01em;
+  }
+  .campo label .req {
+    color: var(--ouro);
+    margin-left: 3px;
+    font-size: 14px;
+  }
+  .campo label .hint {
+    font-weight: 400;
+    color: var(--cinza-500);
+    font-size: 12px;
+    margin-left: 6px;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="url"],
+  input[type="number"],
+  input[type="date"],
+  select,
+  textarea {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1.5px solid var(--borda);
+    border-radius: 6px;
+    font-family: var(--fonte-corpo);
+    font-size: 14px;
+    color: var(--cinza-900);
+    background: var(--branco);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none;
+  }
+  input:focus, select:focus, textarea:focus {
+    border-color: var(--verde-claro);
+    box-shadow: 0 0 0 3px rgba(45, 122, 80, 0.12);
+  }
+  textarea { resize: vertical; min-height: 90px; line-height: 1.6; }
+  select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9'%3E%3Cpath d='M1 1l6 6 6-6' stroke='%236b6b6b' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 38px; }
+  input[type="date"] { font-family: var(--fonte-corpo); }
+
+  /* CHECKBOXES / RADIO GRID */
+  .check-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+    margin-top: 2px;
+  }
+  .check-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 14px;
+    border: 1.5px solid var(--borda);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: var(--branco);
+  }
+  .check-item:hover { border-color: var(--verde-claro); background: var(--verde-bg); }
+  .check-item input[type="checkbox"],
+  .check-item input[type="radio"] {
+    width: 16px; height: 16px;
+    margin-top: 2px;
+    accent-color: var(--verde-ufma);
+    flex-shrink: 0;
+  }
+  .check-item span { font-size: 13px; color: var(--cinza-700); line-height: 1.4; }
+
+  /* BLOCO REPETÍVEL DE PROJETO */
+  .projeto-bloco {
+    border: 1.5px solid var(--borda);
+    border-radius: 8px;
+    padding: 24px;
+    margin-bottom: 20px;
+    position: relative;
+    background: var(--cinza-100);
+    transition: border-color 0.2s;
+  }
+  .projeto-bloco:hover { border-color: var(--verde-claro); }
+  .projeto-bloco-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--borda);
+  }
+  .projeto-bloco-titulo {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--verde-ufma);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .projeto-num-badge {
+    width: 24px; height: 24px;
+    background: var(--verde-ufma);
+    color: white;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px;
+    font-family: var(--fonte-mono);
+  }
+  .btn-remover {
+    background: none;
+    border: 1.5px solid #e8c4c4;
+    color: var(--erro);
+    padding: 5px 12px;
+    border-radius: 5px;
+    font-size: 12px;
+    cursor: pointer;
+    font-family: var(--fonte-corpo);
+    font-weight: 500;
+    transition: all 0.2s;
+  }
+  .btn-remover:hover { background: #fdecea; border-color: var(--erro); }
+
+  .btn-adicionar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 20px;
+    background: var(--verde-bg);
+    border: 2px dashed var(--verde-claro);
+    border-radius: 8px;
+    color: var(--verde-ufma);
+    font-size: 14px;
+    font-weight: 600;
+    font-family: var(--fonte-corpo);
+    cursor: pointer;
+    width: 100%;
+    justify-content: center;
+    transition: all 0.2s;
+    margin-top: 8px;
+  }
+  .btn-adicionar:hover { background: #ddeee6; border-color: var(--verde-ufma); }
+
+  /* DIVISOR */
+  .divisor {
+    border: none;
+    border-top: 1px solid var(--borda);
+    margin: 24px 0;
+  }
+
+  /* TAG INPUT */
+  .tag-input-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 8px 12px;
+    border: 1.5px solid var(--borda);
+    border-radius: 6px;
+    min-height: 44px;
+    cursor: text;
+    background: var(--branco);
+    transition: border-color 0.2s;
+  }
+  .tag-input-wrap:focus-within { border-color: var(--verde-claro); box-shadow: 0 0 0 3px rgba(45,122,80,0.12); }
+  .tag {
+    background: var(--verde-ufma);
+    color: white;
+    padding: 3px 10px 3px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .tag button { background: none; border: none; color: rgba(255,255,255,0.7); cursor: pointer; padding: 0; font-size: 14px; line-height: 1; }
+  .tag button:hover { color: white; }
+  .tag-input-real { border: none; outline: none; font-family: var(--fonte-corpo); font-size: 13px; flex: 1; min-width: 120px; }
+
+  /* INDICADOR DE ARQUIVO */
+  .file-area {
+    border: 2px dashed var(--borda);
+    border-radius: 8px;
+    padding: 28px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: var(--branco);
+  }
+  .file-area:hover { border-color: var(--verde-claro); background: var(--verde-bg); }
+  .file-area p { font-size: 13px; color: var(--cinza-500); margin-top: 8px; }
+  .file-area .file-icon { font-size: 32px; }
+  .file-area input { display: none; }
+
+  /* BOTÃO SUBMIT */
+  .submit-area {
+    text-align: center;
+    padding: 40px 0;
+  }
+  .btn-submit {
+    background: var(--verde-ufma);
+    color: white;
+    border: none;
+    padding: 16px 56px;
+    border-radius: 8px;
+    font-family: var(--fonte-titulo);
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s;
+    letter-spacing: 0.01em;
+    box-shadow: 0 4px 16px rgba(26,92,56,0.25);
+  }
+  .btn-submit:hover { background: var(--verde-claro); transform: translateY(-1px); box-shadow: 0 6px 24px rgba(26,92,56,0.3); }
+  .btn-submit:active { transform: translateY(0); }
+  .submit-nota { font-size: 12px; color: var(--cinza-500); margin-top: 14px; }
+
+  /* MENSAGEM DE SUCESSO */
+  .sucesso-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+  }
+  .sucesso-overlay.ativo { display: flex; }
+  .sucesso-box {
+    background: white;
+    border-radius: 12px;
+    padding: 48px;
+    max-width: 480px;
+    text-align: center;
+    box-shadow: 0 24px 64px rgba(0,0,0,0.25);
+  }
+  .sucesso-icon { font-size: 64px; margin-bottom: 16px; }
+  .sucesso-box h2 { font-family: var(--fonte-titulo); font-size: 24px; color: var(--verde-ufma); margin-bottom: 12px; }
+  .sucesso-box p { font-size: 14px; color: var(--cinza-500); line-height: 1.7; }
+  .btn-fechar { margin-top: 24px; padding: 10px 32px; background: var(--verde-ufma); color: white; border: none; border-radius: 6px; font-size: 14px; font-family: var(--fonte-corpo); cursor: pointer; font-weight: 500; }
+
+  /* RODAPÉ */
+  footer {
+    background: var(--verde-ufma);
+    color: rgba(255,255,255,0.65);
+    text-align: center;
+    padding: 24px;
+    font-size: 12px;
+    letter-spacing: 0.03em;
+  }
+  footer b { color: rgba(255,255,255,0.9); }
+
+  /* MOBILE */
+  @media (max-width: 640px) {
+    .cabecalho-principal { padding: 24px 20px; grid-template-columns: auto 1fr; gap: 16px; }
+    .cabecalho-texto h1 { font-size: 18px; }
+    .cabecalho-topo { padding: 8px 20px; }
+    .form-container { padding: 0 20px 60px; }
+    .campo-grupo, .campo-grupo.tres { grid-template-columns: 1fr; }
+    .secao-body { padding: 20px; }
+    .btn-submit { width: 100%; }
+    .progresso-wrap { padding: 0 20px; }
+    .intro-box { margin: 24px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- CABEÇALHO -->
+<header class="cabecalho">
+  <div class="cabecalho-topo">
+    <span>Universidade Federal do Maranhão — UFMA</span>
+    <span>·</span>
+    <b>Campus Bacabal</b>
+    <span>·</span>
+    <span>PPGATS — Coleta de Dados Acadêmicos</span>
+  </div>
+  <div class="cabecalho-principal">
+    <div class="brasao">🌿</div>
+    <div class="cabecalho-texto">
+      <h1>Levantamento de Projetos de Pesquisa Ativos</h1>
+      <p>Programa de Pós-Graduação em Ambiente, Tecnologia e Sociedade — Corpo Docente</p>
+    </div>
+  </div>
+</header>
+<div class="barra-ouro"></div>
+
+<!-- INTRO -->
+<div class="intro-box" style="margin: 36px auto; padding: 20px 28px; max-width: 860px;">
+  <strong>Instruções para preenchimento:</strong> Este formulário destina-se ao levantamento dos projetos de pesquisa em andamento dos docentes vinculados ao PPGATS. As informações fornecidas serão utilizadas exclusivamente para a elaboração do documento de proposta de programa (APCN) e para a composição do portfólio de pesquisa submetido à CAPES. Preencha um formulário para cada docente. Em caso de dúvidas, entre em contato com a coordenação.
+</div>
+
+<!-- PROGRESSO -->
+<div class="progresso-wrap">
+  <div class="progresso-label">
+    <span id="progresso-txt">Progresso do preenchimento</span>
+    <span id="progresso-pct">0%</span>
+  </div>
+  <div class="progresso-barra">
+    <div class="progresso-fill" id="progresso-fill" style="width:0%"></div>
+  </div>
+</div>
+
+<!-- FORMULÁRIO -->
+<form class="form-container" id="formulario" action="https://formspree.io/f/mdajepvq" method="POST">
+
+  <!-- SEÇÃO 1: IDENTIFICAÇÃO DO DOCENTE -->
+  <div class="secao">
+    <div class="secao-header">
+      <div class="secao-num">1</div>
+      <div>
+        <div class="secao-titulo">Identificação do Docente</div>
+        <div class="secao-subtitulo">Dados institucionais e de contato</div>
+      </div>
+    </div>
+    <div class="secao-body">
+      <div class="campo-grupo">
+        <div class="campo">
+          <label>Nome completo <span class="req">*</span></label>
+          <select name="docente_nome" required id="docente_nome" onchange="atualizarProgresso()">
+            <option value="">Selecione seu nome</option>
+            <option>Aluisio José Fernandes Junior</option>
+            <option>André Flávio Gonçalves Silva</option>
+            <option>André Luiz Borba do Nascimento</option>
+            <option>Ariel Nonato Almeida de Abreu Silva</option>
+            <option>Carolina Pereira Aranha</option>
+            <option>Carlos William de Araujo Paschoal</option>
+            <option>Claudio Rejane da Silva Dantas</option>
+            <option>Clenilton Costa dos Santos</option>
+            <option>Cristiana Resende Marcelo</option>
+            <option>Daiane Fossatti Dall'Oglio</option>
+            <option>Diego Augusto Batista Barbosa</option>
+            <option>Elidio Armando Exposto Guarçoni</option>
+            <option>Francisco Augusto Silva Nobre</option>
+            <option>Hawbertt Rocha Costa</option>
+            <option>Jorge Diniz de Oliveira</option>
+            <option>Kerolayne de Melo Nogueira</option>
+            <option>Leonardo Baltazar Cantanhede</option>
+            <option>Leiz Costa Veras</option>
+            <option>Michel Ricardo de Barros Chaves</option>
+            <option>Pollyanna Pereira Santos</option>
+            <option>Regina Célia de Sousa</option>
+            <option>Rosivaldo Xavier da Silva</option>
+            <option>Washington Soares Ferreira Júnior</option>
+            <option value="outro">Outro (não listado)</option>
+          </select>
+        </div>
+        <div class="campo">
+          <label>E-mail institucional <span class="req">*</span></label>
+          <input type="email" name="docente_email" placeholder="nome@ufma.br" required onchange="atualizarProgresso()">
+        </div>
+      </div>
+      <div class="campo-grupo tres">
+        <div class="campo">
+          <label>SIAPE <span class="req">*</span></label>
+          <input type="text" name="docente_siape" placeholder="Ex.: 1234567" required onchange="atualizarProgresso()">
+        </div>
+        <div class="campo">
+          <label>Lattes CNPq <span class="req">*</span></label>
+          <input type="url" name="docente_lattes" placeholder="http://lattes.cnpq.br/..." required onchange="atualizarProgresso()">
+        </div>
+        <div class="campo">
+          <label>ORCID <span class="hint">(opcional)</span></label>
+          <input type="text" name="docente_orcid" placeholder="0000-0000-0000-0000">
+        </div>
+      </div>
+      <div class="campo-grupo">
+        <div class="campo">
+          <label>Linha de pesquisa no PPGATS <span class="req">*</span></label>
+          <select name="linha_pesquisa" required onchange="atualizarProgresso()">
+            <option value="">Selecione a linha</option>
+            <option>Linha 1 — Território, Biodiversidade e Saúde Ambiental</option>
+            <option>Linha 2 — Tecnologias Ambientais, Biotecnologias Aplicadas e Sustentabilidade</option>
+            <option>Ambas as linhas</option>
+          </select>
+        </div>
+        <div class="campo">
+          <label>Vínculo no programa <span class="req">*</span></label>
+          <select name="vinculo_programa" required onchange="atualizarProgresso()">
+            <option value="">Selecione</option>
+            <option>Docente Permanente</option>
+            <option>Docente Colaborador</option>
+            <option>Docente Visitante</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 2: PROJETOS DE PESQUISA ATIVOS -->
+  <div class="secao">
+    <div class="secao-header">
+      <div class="secao-num">2</div>
+      <div>
+        <div class="secao-titulo">Projetos de Pesquisa em Andamento</div>
+        <div class="secao-subtitulo">Informe todos os projetos ativos (com início e sem conclusão até a data atual)</div>
+      </div>
+    </div>
+    <div class="secao-body">
+      <div id="projetos-container">
+        <!-- Bloco 1 — gerado via JS -->
+      </div>
+      <button type="button" class="btn-adicionar" onclick="adicionarProjeto()">
+        <span style="font-size:18px">＋</span> Adicionar outro projeto de pesquisa
+      </button>
+    </div>
+  </div>
+
+  
+
+  <!-- SEÇÃO 4: INFRAESTRUTURA E PARCERIAS -->
+  <div class="secao">
+    <div class="secao-header">
+      <div class="secao-num">3</div>
+      <div>
+        <div class="secao-titulo">Infraestrutura de Pesquisa e Parcerias</div>
+        <div class="secao-subtitulo">Laboratórios, grupos de pesquisa e redes de colaboração</div>
+      </div>
+    </div>
+    <div class="secao-body">
+      <div class="campo-grupo">
+        <div class="campo">
+          <label>Laboratório(s) onde desenvolve pesquisa</label>
+          <input type="text" name="laboratorios" placeholder="Ex.: Lab. de Botânica BMA / UFMA-Bacabal">
+        </div>
+        <div class="campo">
+          <label>Grupo(s) de pesquisa CNPq certificado(s)</label>
+          <input type="text" name="grupos_pesquisa" placeholder="Ex.: GEAMB — Grupo de Ecologia Ambiental">
+        </div>
+      </div>
+      <div class="campo-grupo full">
+        <div class="campo">
+          <label>Parcerias institucionais ativas <span class="hint">(nacionais ou internacionais)</span></label>
+          <textarea name="parcerias" rows="3" placeholder="Ex.: UFV, UFPE, Universidade de Exeter (UK), FAPEMA, Embrapa"></textarea>
+        </div>
+      </div>
+      <div class="campo-grupo full">
+        <div class="campo">
+          <label>O docente possui acesso a equipamentos ou instalações especiais relevantes para o PPGATS?</label>
+          <textarea name="equipamentos" rows="3" placeholder="Ex.: Cromatógrafo a gás, Microscópio eletrônico de varredura, Herbário BMA, Câmara climática..."></textarea>
+        </div>
+      </div>
+      <div class="campo-grupo full">
+        <div class="campo">
+          <label>Pertence a redes de pesquisa temáticas? <span class="hint">(INCT, PRONEX, redes CAPES etc.)</span></label>
+          <input type="text" name="redes_pesquisa" placeholder="Ex.: INCT da Biodiversidade, Rede Nordeste de Biotecnologia (RENORBIO)">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+
+  <!-- SEÇÃO 7: INFORMAÇÕES COMPLEMENTARES -->
+  <div class="secao">
+    <div class="secao-header">
+      <div class="secao-num">4</div>
+      <div>
+        <div class="secao-titulo">Projetos Futuros e Financiamento</div>
+        <div class="secao-subtitulo">Editais em preparação ou submissão que envolverão o PPGATS</div>
+      </div>
+    </div>
+    <div class="secao-body">
+      <div class="campo-grupo full">
+        <div class="campo">
+          <label>Há projetos planejados ou em fase de submissão de financiamento que envolverão o PPGATS?</label>
+          <textarea name="projetos_futuros" rows="5" placeholder="Descreva editais pretendidos, parcerias em negociação, chamadas FAPEMA, CNPq, CAPES etc."></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BOTÃO SUBMIT -->
+  <div class="submit-area">
+    <button type="submit" class="btn-submit">Enviar Informações ao PPGATS</button>
+
+  </div>
+
+  <!-- Campo oculto para identificação -->
+  <input type="hidden" name="_subject" value="[PPGATS/UFMA] Projetos de Pesquisa Ativos — Formulário Docente">
+  <input type="hidden" name="_next" value="">
+  <input type="text" name="_gotcha" style="display:none">
+
+</form>
+
+<!-- OVERLAY SUCESSO -->
+<div class="sucesso-overlay" id="sucesso-overlay">
+  <div class="sucesso-box">
+    <div class="sucesso-icon">✅</div>
+    <h2>Formulário enviado com sucesso!</h2>
+    <p>Suas informações foram encaminhadas à coordenação do PPGATS. Guarde este comprovante de envio. Em caso de dúvidas, entre em contato pelo e-mail da coordenação do programa.</p>
+    <button class="btn-fechar" onclick="fecharSucesso()">Fechar</button>
+  </div>
+</div>
+
+<footer>
+  <b>PPGATS — Programa de Pós-Graduação em Ambiente, Tecnologia e Sociedade</b><br>
+  Universidade Federal do Maranhão · Campus Bacabal · Proposta APCN/CAPES · Área 49 — Ciências Ambientais
+</footer>
+
+<script>
+  let contadorProjeto = 0;
+
+  function criarBlocoProjeto(num) {
+    const id = `projeto_${num}`;
+    return `
+    <div class="projeto-bloco" id="${id}">
+      <div class="projeto-bloco-header">
+        <div class="projeto-bloco-titulo">
+          <div class="projeto-num-badge">${num}</div>
+          Projeto de Pesquisa ${num}
+        </div>
+        ${num > 1 ? `<button type="button" class="btn-remover" onclick="removerProjeto('${id}')">✕ Remover</button>` : ''}
+      </div>
+
+      <div class="campo-grupo full">
+        <div class="campo">
+          <label>Título do projeto <span class="req">*</span></label>
+          <input type="text" name="proj${num}_titulo" placeholder="Título completo conforme registro institucional" ${num===1?'required':''}>
+        </div>
+      </div>
+
+      <div class="campo-grupo tres">
+        <div class="campo">
+          <label>Situação atual</label>
+          <select name="proj${num}_situacao">
+            <option value="">Selecione</option>
+            <option>Em andamento — com financiamento</option>
+            <option>Em andamento — sem financiamento externo</option>
+            <option>Em andamento — em espera de resultado</option>
+            <option>Recém aprovado — a iniciar</option>
+          </select>
+        </div>
+        <div class="campo">
+          <label>Data de início</label>
+          <input type="date" name="proj${num}_inicio">
+        </div>
+        <div class="campo">
+          <label>Previsão de conclusão</label>
+          <input type="date" name="proj${num}_fim">
+        </div>
+      </div>
+
+      <div class="campo-grupo">
+        <div class="campo">
+          <label>Agência(s) financiadora(s)</label>
+          <div class="check-grid" style="margin-top:6px; grid-template-columns: repeat(auto-fill, minmax(150px,1fr));">
+            <label class="check-item"><input type="checkbox" name="proj${num}_financ" value="CNPq"> <span>CNPq</span></label>
+            <label class="check-item"><input type="checkbox" name="proj${num}_financ" value="CAPES"> <span>CAPES</span></label>
+            <label class="check-item"><input type="checkbox" name="proj${num}_financ" value="FAPEMA"> <span>FAPEMA</span></label>
+            <label class="check-item"><input type="checkbox" name="proj${num}_financ" value="FINEP"> <span>FINEP</span></label>
+            <label class="check-item"><input type="checkbox" name="proj${num}_financ" value="Sem financiamento externo"> <span>Sem financiamento</span></label>
+            <label class="check-item"><input type="checkbox" name="proj${num}_financ" value="Outro financiador"> <span>Outro</span></label>
+          </div>
+        </div>
+        <div class="campo">
+          <label>Função do docente no projeto</label>
+          <select name="proj${num}_funcao">
+            <option value="">Selecione</option>
+            <option>Coordenador / Pesquisador Principal</option>
+            <option>Pesquisador Colaborador</option>
+            <option>Co-investigador</option>
+            <option>Bolsista de Produtividade vinculado</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="campo-grupo">
+        <div class="campo">
+          <label>Número do processo / edital de origem</label>
+          <input type="text" name="proj${num}_processo" placeholder="Ex.: CNPq 312345/2023-1">
+        </div>
+        <div class="campo">
+          <label>Valor total aprovado (R$) <span class="hint">(se houver)</span></label>
+          <input type="text" name="proj${num}_valor" placeholder="Ex.: R$ 150.000,00">
+        </div>
+      </div>
+
+      <div class="campo-grupo full">
+        <div class="campo">
+          <label>Resumo do projeto <span class="req">*</span></label>
+          <textarea name="proj${num}_resumo" rows="4" placeholder="Descreva o objeto, objetivo principal, metodologia e resultados esperados." ${num===1?'required':''}></textarea>
+        </div>
+      </div>
+
+      <div class="campo-grupo">
+        <div class="campo">
+          <label>Aderência à Linha de Pesquisa do PPGATS</label>
+          <select name="proj${num}_linha">
+            <option value="">Selecione</option>
+            <option>Linha 1 — Território, Biodiversidade e Saúde Ambiental</option>
+            <option>Linha 2 — Tecnologias Ambientais, Biotecnologias Aplicadas e Sustentabilidade</option>
+            <option>Ambas as linhas</option>
+          </select>
+        </div>
+        <div class="campo">
+          <label>O projeto prevê bolsas para estudantes de pós-graduação?</label>
+          <select name="proj${num}_bolsas">
+            <option value="">Selecione</option>
+            <option>Sim — mestrado</option>
+            <option>Sim — doutorado</option>
+            <option>Sim — mestrado e doutorado</option>
+            <option>Não</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="campo-grupo full">
+        <div class="campo">
+          <label>Palavras-chave do projeto <span class="hint">(digite e pressione Enter ou vírgula)</span></label>
+          <div class="tag-input-wrap" onclick="this.querySelector('.tag-input-real').focus()" id="tags-wrap-${num}">
+            <input class="tag-input-real" type="text" placeholder="Ex.: biorremediação, Cerrado, contaminantes..." 
+              onkeydown="adicionarTag(event, ${num})" id="tag-input-${num}">
+          </div>
+          <input type="hidden" name="proj${num}_palavras_chave" id="tags-hidden-${num}">
+        </div>
+      </div>
+    </div>`;
+  }
+
+  function adicionarProjeto() {
+    contadorProjeto++;
+    const container = document.getElementById('projetos-container');
+    const div = document.createElement('div');
+    div.innerHTML = criarBlocoProjeto(contadorProjeto);
+    container.appendChild(div.firstElementChild);
+    container.lastElementChild.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function removerProjeto(id) {
+    const el = document.getElementById(id);
+    if (el) { el.style.opacity = '0'; el.style.transform = 'scale(0.97)'; el.style.transition = 'all 0.2s'; setTimeout(() => el.remove(), 200); }
+  }
+
+  function adicionarTag(event, num) {
+    if (event.key === 'Enter' || event.key === ',') {
+      event.preventDefault();
+      const input = document.getElementById(`tag-input-${num}`);
+      const val = input.value.trim().replace(/,$/, '');
+      if (!val) return;
+      const wrap = document.getElementById(`tags-wrap-${num}`);
+      const hidden = document.getElementById(`tags-hidden-${num}`);
+      const tag = document.createElement('div');
+      tag.className = 'tag';
+      tag.innerHTML = `${val} <button type="button" onclick="removerTag(this, ${num})">×</button>`;
+      wrap.insertBefore(tag, input);
+      input.value = '';
+      atualizarTagsHidden(num);
+    }
+  }
+
+  function removerTag(btn, num) {
+    btn.closest('.tag').remove();
+    atualizarTagsHidden(num);
+  }
+
+  function atualizarTagsHidden(num) {
+    const wrap = document.getElementById(`tags-wrap-${num}`);
+    const tags = [...wrap.querySelectorAll('.tag')].map(t => t.textContent.trim().replace('×','').trim());
+    document.getElementById(`tags-hidden-${num}`).value = tags.join(', ');
+  }
+
+  // PROGRESSO
+  function atualizarProgresso() {
+    const campos = ['docente_nome', 'docente_siape', 'docente_lattes', 'docente_email', 'linha_pesquisa', 'vinculo_programa', 'articulacao_territorio'];
+    let preenchidos = 0;
+    campos.forEach(id => {
+      const el = document.querySelector(`[name="${id}"]`);
+      if (el && el.value.trim()) preenchidos++;
+    });
+    const pct = Math.round((preenchidos / campos.length) * 100);
+    document.getElementById('progresso-fill').style.width = pct + '%';
+    document.getElementById('progresso-pct').textContent = pct + '%';
+    document.getElementById('progresso-txt').textContent = pct < 100 ? 'Preenchendo dados obrigatórios...' : '✔ Dados obrigatórios completos';
+  }
+
+  // SUBMIT
+  document.getElementById('formulario').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const btn = document.querySelector('.btn-submit');
+    btn.textContent = 'Enviando...';
+    btn.disabled = true;
+    try {
+      const formData = new FormData(this);
+      const resp = await fetch(this.action, { method: 'POST', body: formData, headers: { 'Accept': 'application/json' } });
+      if (resp.ok) {
+        document.getElementById('sucesso-overlay').classList.add('ativo');
+        this.reset();
+        atualizarProgresso();
+      } else {
+        alert('Erro ao enviar. Verifique sua conexão e tente novamente.');
+      }
+    } catch {
+      alert('Erro de rede. Verifique sua conexão e tente novamente.');
+    }
+    btn.textContent = 'Enviar Informações ao PPGATS';
+    btn.disabled = false;
+  });
+
+  function fecharSucesso() {
+    document.getElementById('sucesso-overlay').classList.remove('ativo');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // INIT — criar primeiro bloco
+  adicionarProjeto();
+</script>
+</body>
+</html>

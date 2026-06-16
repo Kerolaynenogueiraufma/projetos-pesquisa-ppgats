@@ -483,7 +483,7 @@
 
 <!-- INTRO -->
 <div class="intro-box" style="margin: 36px auto; padding: 20px 28px; max-width: 860px;">
-  <strong>Instruções para preenchimento:</strong> Este formulário destina-se ao levantamento dos projetos de pesquisa em andamento dos docentes vinculados ao PPGATS. As informações fornecidas serão utilizadas exclusivamente para a elaboração do documento de proposta de programa (APCN) e para a composição do portfólio de pesquisa submetido à CAPES. Preencha um formulário para cada docente. Em caso de dúvidas, entre em contato com a coordenação.
+  <strong>Atenção:</strong> Ao preencher a linha de pesquisa, descreva de forma objetiva como os seus projetos se articulam com a linha selecionada, fundamentando a aderência temática para fins de composição do APCN/CAPES.
 </div>
 
 <!-- PROGRESSO -->
@@ -515,29 +515,21 @@
           <label>Nome completo <span class="req">*</span></label>
           <select name="docente_nome" required id="docente_nome" onchange="atualizarProgresso()">
             <option value="">Selecione seu nome</option>
-            <option>Aluisio José Fernandes Junior</option>
-            <option>André Flávio Gonçalves Silva</option>
             <option>André Luiz Borba do Nascimento</option>
             <option>Ariel Nonato Almeida de Abreu Silva</option>
-            <option>Carolina Pereira Aranha</option>
-            <option>Carlos William de Araujo Paschoal</option>
-            <option>Claudio Rejane da Silva Dantas</option>
-            <option>Clenilton Costa dos Santos</option>
-            <option>Cristiana Resende Marcelo</option>
-            <option>Daiane Fossatti Dall'Oglio</option>
-            <option>Diego Augusto Batista Barbosa</option>
             <option>Elidio Armando Exposto Guarçoni</option>
-            <option>Francisco Augusto Silva Nobre</option>
+            <option>Emerson Dalla Chieza</option>
+            <option>Filipa Alexandra de Abreu Paulos (Docente Externa)</option>
             <option>Hawbertt Rocha Costa</option>
-            <option>Jorge Diniz de Oliveira</option>
+            <option>Joel Felix Silva Diniz Filho</option>
+            <option>Juliana Rodrigues Rocha</option>
             <option>Kerolayne de Melo Nogueira</option>
-            <option>Leonardo Baltazar Cantanhede</option>
-            <option>Leiz Costa Veras</option>
+            <option>Leonardo da Silva Chaves</option>
+            <option>Leiz Maria Costa Veras</option>
+            <option>Marconio Martins Rodrigues</option>
             <option>Michel Ricardo de Barros Chaves</option>
-            <option>Pollyanna Pereira Santos</option>
-            <option>Regina Célia de Sousa</option>
-            <option>Rosivaldo Xavier da Silva</option>
-            <option>Washington Soares Ferreira Júnior</option>
+            <option>Monique Helen Ribeiro Lima</option>
+            <option>Raysa Valéria Carvalho Saraiva</option>
             <option value="outro">Outro (não listado)</option>
           </select>
         </div>
@@ -546,39 +538,18 @@
           <input type="email" name="docente_email" placeholder="nome@ufma.br" required onchange="atualizarProgresso()">
         </div>
       </div>
-      <div class="campo-grupo tres">
-        <div class="campo">
-          <label>SIAPE <span class="req">*</span></label>
-          <input type="text" name="docente_siape" placeholder="Ex.: 1234567" required onchange="atualizarProgresso()">
-        </div>
-        <div class="campo">
-          <label>Lattes CNPq <span class="req">*</span></label>
-          <input type="url" name="docente_lattes" placeholder="http://lattes.cnpq.br/..." required onchange="atualizarProgresso()">
-        </div>
-        <div class="campo">
-          <label>ORCID <span class="hint">(opcional)</span></label>
-          <input type="text" name="docente_orcid" placeholder="0000-0000-0000-0000">
-        </div>
-      </div>
+      <div class="campo-grupo">
       <div class="campo-grupo">
         <div class="campo">
           <label>Linha de pesquisa no PPGATS <span class="req">*</span></label>
           <select name="linha_pesquisa" required onchange="atualizarProgresso()">
             <option value="">Selecione a linha</option>
-            <option>Linha 1 — Território, Biodiversidade e Saúde Ambiental</option>
-            <option>Linha 2 — Tecnologias Ambientais, Biotecnologias Aplicadas e Sustentabilidade</option>
-            <option>Ambas as linhas</option>
+            <option>Biodiversidade</option>
+            <option>Tecnologia Ambiental</option>
+            <option>Sustentabilidade e Educação Ambiental</option>
           </select>
         </div>
-        <div class="campo">
-          <label>Vínculo no programa <span class="req">*</span></label>
-          <select name="vinculo_programa" required onchange="atualizarProgresso()">
-            <option value="">Selecione</option>
-            <option>Docente Permanente</option>
-            <option>Docente Colaborador</option>
-            <option>Docente Visitante</option>
-          </select>
-        </div>
+
       </div>
     </div>
   </div>
@@ -784,9 +755,9 @@
           <label>Aderência à Linha de Pesquisa do PPGATS</label>
           <select name="proj${num}_linha">
             <option value="">Selecione</option>
-            <option>Linha 1 — Território, Biodiversidade e Saúde Ambiental</option>
-            <option>Linha 2 — Tecnologias Ambientais, Biotecnologias Aplicadas e Sustentabilidade</option>
-            <option>Ambas as linhas</option>
+            <option>Biodiversidade</option>
+            <option>Tecnologia Ambiental</option>
+            <option>Sustentabilidade e Educação Ambiental</option>
           </select>
         </div>
         <div class="campo">
@@ -858,7 +829,7 @@
 
   // PROGRESSO
   function atualizarProgresso() {
-    const campos = ['docente_nome', 'docente_siape', 'docente_lattes', 'docente_email', 'linha_pesquisa', 'vinculo_programa', 'articulacao_territorio'];
+    const campos = ['docente_nome', 'docente_lattes', 'docente_email', 'linha_pesquisa', 'articulacao_territorio'];
     let preenchidos = 0;
     campos.forEach(id => {
       const el = document.querySelector(`[name="${id}"]`);

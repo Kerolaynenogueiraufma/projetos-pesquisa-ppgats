@@ -3,874 +3,467 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Projetos de Pesquisa Ativos — PPGATS / UFMA</title>
+<title>Banco de Questões — Aula 1: Parasitologia com Imunologia · CNBA0309</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap');
-
-  :root {
-    --verde-ufma: #1a5c38;
-    --verde-claro: #2d7a50;
-    --verde-bg: #f0f7f3;
-    --ouro: #c9922b;
-    --ouro-claro: #fdf6e8;
-    --cinza-900: #1a1a1a;
-    --cinza-700: #3d3d3d;
-    --cinza-500: #6b6b6b;
-    --cinza-300: #c4c4c4;
-    --cinza-100: #f5f5f5;
-    --branco: #ffffff;
-    --borda: #d4e2d9;
-    --erro: #c0392b;
-    --ok: #1a5c38;
-    --fonte-titulo: 'Source Serif 4', Georgia, serif;
-    --fonte-corpo: 'Inter', sans-serif;
-    --fonte-mono: 'JetBrains Mono', monospace;
+  :root{
+    --primary:#0E4C46; --primaryDk:#0A3A35; --deep:#07211E;
+    --gold:#E5A72C; --goldDk:#B9831A; --coral:#D64C2F; --coralDk:#A9371F;
+    --sage:#3E7C68; --sageMid:#6FA088; --sageLt:#D9E7E0;
+    --panel:#F1F5F3; --tealTint:#DDEBE7; --goldTint:#FBEED1; --coralTint:#F9DED4; --sageTint:#DCEAE4;
+    --ink:#15302B; --body:#2B3E3A; --muted:#6A7B77; --line:#D3E0DB;
+    --ok:#2F7D57; --okBg:#E7F3EC; --bad:#C0392B; --badBg:#FBE9E7;
   }
-
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  body {
-    font-family: var(--fonte-corpo);
-    background: var(--cinza-100);
-    color: var(--cinza-900);
-    min-height: 100vh;
-    line-height: 1.6;
-  }
-
-  /* CABEÇALHO */
-  .cabecalho {
-    background: var(--verde-ufma);
-    color: var(--branco);
-    padding: 0;
-  }
-  .cabecalho-topo {
-    background: rgba(0,0,0,0.2);
-    padding: 8px 40px;
-    font-size: 12px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  .cabecalho-topo span { opacity: 0.75; }
-  .cabecalho-topo b { color: var(--ouro); }
-  .cabecalho-principal {
-    padding: 36px 40px 32px;
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 28px;
-    align-items: center;
-    max-width: 980px;
-    margin: 0 auto;
-  }
-  .brasao {
-    width: 72px; height: 72px;
-    background: rgba(255,255,255,0.12);
-    border-radius: 50%;
-    border: 2px solid rgba(255,255,255,0.25);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 32px;
-    flex-shrink: 0;
-  }
-  .cabecalho-texto h1 {
-    font-family: var(--fonte-titulo);
-    font-size: 24px;
-    font-weight: 600;
-    letter-spacing: -0.01em;
-    line-height: 1.2;
-    margin-bottom: 4px;
-  }
-  .cabecalho-texto p {
-    font-size: 14px;
-    opacity: 0.75;
-    font-weight: 400;
-  }
-
-  /* BARRA DOURADA */
-  .barra-ouro {
-    height: 4px;
-    background: linear-gradient(90deg, var(--ouro) 0%, #e8b84b 50%, var(--ouro) 100%);
-  }
-
-  /* AVISO / INTRO */
-  .intro-box {
-    background: var(--ouro-claro);
-    border-left: 4px solid var(--ouro);
-    padding: 20px 28px;
-    margin: 36px auto;
-    max-width: 860px;
-    border-radius: 0 6px 6px 0;
-    font-size: 14px;
-    line-height: 1.7;
-    color: var(--cinza-700);
-  }
-  .intro-box strong { color: var(--cinza-900); }
-
-  /* PROGRESSO */
-  .progresso-wrap {
-    max-width: 860px;
-    margin: 0 auto 8px;
-    padding: 0 40px;
-  }
-  .progresso-label {
-    display: flex;
-    justify-content: space-between;
-    font-size: 12px;
-    color: var(--cinza-500);
-    margin-bottom: 6px;
-  }
-  .progresso-barra {
-    height: 6px;
-    background: var(--borda);
-    border-radius: 3px;
-    overflow: hidden;
-  }
-  .progresso-fill {
-    height: 100%;
-    background: var(--verde-ufma);
-    border-radius: 3px;    transition: width 0.4s ease;
-  }
-
-  /* FORMULÁRIO PRINCIPAL */
-  .form-container {
-    max-width: 860px;
-    margin: 0 auto;
-    padding: 0 40px 80px;
-  }
-
-  /* SEÇÕES */
-  .secao {
-    background: var(--branco);
-    border: 1px solid var(--borda);
-    border-radius: 8px;
-    margin-bottom: 28px;
-    overflow: hidden;
-  }
-  .secao-header {
-    background: var(--verde-bg);
-    border-bottom: 1px solid var(--borda);
-    padding: 16px 28px;
-    display: flex;
-    align-items: center;
-    gap: 14px;
-  }
-  .secao-num {
-    width: 30px; height: 30px;
-    background: var(--verde-ufma);
-    color: var(--branco);
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 13px;
-    font-weight: 600;
-    flex-shrink: 0;
-    font-family: var(--fonte-mono);
-  }
-  .secao-titulo {
-    font-family: var(--fonte-titulo);
-    font-size: 17px;
-    font-weight: 600;
-    color: var(--verde-ufma);
-  }
-  .secao-subtitulo {
-    font-size: 12px;
-    color: var(--cinza-500);
-    margin-top: 1px;
-  }
-  .secao-body {
-    padding: 28px;
-  }
-
-  /* CAMPOS */
-  .campo-grupo {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    margin-bottom: 20px;
-  }
-  .campo-grupo.full { grid-template-columns: 1fr; }
-  .campo-grupo.tres { grid-template-columns: 1fr 1fr 1fr; }
-
-  .campo {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-  .campo label {
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--cinza-700);
-    letter-spacing: 0.01em;
-  }
-  .campo label .req {
-    color: var(--ouro);
-    margin-left: 3px;
-    font-size: 14px;
-  }
-  .campo label .hint {
-    font-weight: 400;
-    color: var(--cinza-500);
-    font-size: 12px;
-    margin-left: 6px;
-  }
-
-  input[type="text"],
-  input[type="email"],
-  input[type="url"],
-  input[type="number"],
-  input[type="date"],
-  select,
-  textarea {
-    width: 100%;
-    padding: 10px 14px;
-    border: 1.5px solid var(--borda);
-    border-radius: 6px;
-    font-family: var(--fonte-corpo);
-    font-size: 14px;
-    color: var(--cinza-900);
-    background: var(--branco);
-    transition: border-color 0.2s, box-shadow 0.2s;
-    outline: none;
-  }
-  input:focus, select:focus, textarea:focus {
-    border-color: var(--verde-claro);
-    box-shadow: 0 0 0 3px rgba(45, 122, 80, 0.12);
-  }
-  textarea { resize: vertical; min-height: 90px; line-height: 1.6; }
-  select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9'%3E%3Cpath d='M1 1l6 6 6-6' stroke='%236b6b6b' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 38px; }
-  input[type="date"] { font-family: var(--fonte-corpo); }
-
-  /* CHECKBOXES / RADIO GRID */
-  .check-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 8px;
-    margin-top: 2px;
-  }
-  .check-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    padding: 10px 14px;
-    border: 1.5px solid var(--borda);
-    border-radius: 6px;
-    cursor: pointer;
-    transition: all 0.2s;
-    background: var(--branco);
-  }
-  .check-item:hover { border-color: var(--verde-claro); background: var(--verde-bg); }
-  .check-item input[type="checkbox"],
-  .check-item input[type="radio"] {
-    width: 16px; height: 16px;
-    margin-top: 2px;
-    accent-color: var(--verde-ufma);
-    flex-shrink: 0;
-  }
-  .check-item span { font-size: 13px; color: var(--cinza-700); line-height: 1.4; }
-
-  /* BLOCO REPETÍVEL DE PROJETO */
-  .projeto-bloco {
-    border: 1.5px solid var(--borda);
-    border-radius: 8px;
-    padding: 24px;
-    margin-bottom: 20px;
-    position: relative;
-    background: var(--cinza-100);
-    transition: border-color 0.2s;
-  }
-  .projeto-bloco:hover { border-color: var(--verde-claro); }
-  .projeto-bloco-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 20px;
-    padding-bottom: 12px;
-    border-bottom: 1px solid var(--borda);
-  }
-  .projeto-bloco-titulo {
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--verde-ufma);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .projeto-num-badge {
-    width: 24px; height: 24px;
-    background: var(--verde-ufma);
-    color: white;
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 12px;
-    font-family: var(--fonte-mono);
-  }
-  .btn-remover {
-    background: none;
-    border: 1.5px solid #e8c4c4;
-    color: var(--erro);
-    padding: 5px 12px;
-    border-radius: 5px;
-    font-size: 12px;
-    cursor: pointer;
-    font-family: var(--fonte-corpo);
-    font-weight: 500;
-    transition: all 0.2s;
-  }
-  .btn-remover:hover { background: #fdecea; border-color: var(--erro); }
-
-  .btn-adicionar {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 12px 20px;
-    background: var(--verde-bg);
-    border: 2px dashed var(--verde-claro);
-    border-radius: 8px;
-    color: var(--verde-ufma);
-    font-size: 14px;
-    font-weight: 600;
-    font-family: var(--fonte-corpo);
-    cursor: pointer;
-    width: 100%;
-    justify-content: center;
-    transition: all 0.2s;
-    margin-top: 8px;
-  }
-  .btn-adicionar:hover { background: #ddeee6; border-color: var(--verde-ufma); }
-
-  /* DIVISOR */
-  .divisor {
-    border: none;
-    border-top: 1px solid var(--borda);
-    margin: 24px 0;
-  }
-
-  /* TAG INPUT */
-  .tag-input-wrap {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    padding: 8px 12px;
-    border: 1.5px solid var(--borda);
-    border-radius: 6px;
-    min-height: 44px;
-    cursor: text;
-    background: var(--branco);
-    transition: border-color 0.2s;
-  }
-  .tag-input-wrap:focus-within { border-color: var(--verde-claro); box-shadow: 0 0 0 3px rgba(45,122,80,0.12); }
-  .tag {
-    background: var(--verde-ufma);
-    color: white;
-    padding: 3px 10px 3px 12px;
-    border-radius: 20px;
-    font-size: 12px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-  .tag button { background: none; border: none; color: rgba(255,255,255,0.7); cursor: pointer; padding: 0; font-size: 14px; line-height: 1; }
-  .tag button:hover { color: white; }
-  .tag-input-real { border: none; outline: none; font-family: var(--fonte-corpo); font-size: 13px; flex: 1; min-width: 120px; }
-
-  /* INDICADOR DE ARQUIVO */
-  .file-area {
-    border: 2px dashed var(--borda);
-    border-radius: 8px;
-    padding: 28px;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.2s;
-    background: var(--branco);
-  }
-  .file-area:hover { border-color: var(--verde-claro); background: var(--verde-bg); }
-  .file-area p { font-size: 13px; color: var(--cinza-500); margin-top: 8px; }
-  .file-area .file-icon { font-size: 32px; }
-  .file-area input { display: none; }
-
-  /* BOTÃO SUBMIT */
-  .submit-area {
-    text-align: center;
-    padding: 40px 0;
-  }
-  .btn-submit {
-    background: var(--verde-ufma);
-    color: white;
-    border: none;
-    padding: 16px 56px;
-    border-radius: 8px;
-    font-family: var(--fonte-titulo);
-    font-size: 18px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.25s;
-    letter-spacing: 0.01em;
-    box-shadow: 0 4px 16px rgba(26,92,56,0.25);
-  }
-  .btn-submit:hover { background: var(--verde-claro); transform: translateY(-1px); box-shadow: 0 6px 24px rgba(26,92,56,0.3); }
-  .btn-submit:active { transform: translateY(0); }
-  .submit-nota { font-size: 12px; color: var(--cinza-500); margin-top: 14px; }
-
-  /* MENSAGEM DE SUCESSO */
-  .sucesso-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.55);
-    z-index: 1000;
-    align-items: center;
-    justify-content: center;
-  }
-  .sucesso-overlay.ativo { display: flex; }
-  .sucesso-box {
-    background: white;
-    border-radius: 12px;
-    padding: 48px;
-    max-width: 480px;
-    text-align: center;
-    box-shadow: 0 24px 64px rgba(0,0,0,0.25);
-  }
-  .sucesso-icon { font-size: 64px; margin-bottom: 16px; }
-  .sucesso-box h2 { font-family: var(--fonte-titulo); font-size: 24px; color: var(--verde-ufma); margin-bottom: 12px; }
-  .sucesso-box p { font-size: 14px; color: var(--cinza-500); line-height: 1.7; }
-  .btn-fechar { margin-top: 24px; padding: 10px 32px; background: var(--verde-ufma); color: white; border: none; border-radius: 6px; font-size: 14px; font-family: var(--fonte-corpo); cursor: pointer; font-weight: 500; }
-
-  /* RODAPÉ */
-  footer {
-    background: var(--verde-ufma);
-    color: rgba(255,255,255,0.65);
-    text-align: center;
-    padding: 24px;
-    font-size: 12px;
-    letter-spacing: 0.03em;
-  }
-  footer b { color: rgba(255,255,255,0.9); }
-
-  /* MOBILE */
-  @media (max-width: 640px) {
-    .cabecalho-principal { padding: 24px 20px; grid-template-columns: auto 1fr; gap: 16px; }
-    .cabecalho-texto h1 { font-size: 18px; }
-    .cabecalho-topo { padding: 8px 20px; }
-    .form-container { padding: 0 20px 60px; }
-    .campo-grupo, .campo-grupo.tres { grid-template-columns: 1fr; }
-    .secao-body { padding: 20px; }
-    .btn-submit { width: 100%; }
-    .progresso-wrap { padding: 0 20px; }
-    .intro-box { margin: 24px 20px; }
-  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    color:var(--body);background:linear-gradient(160deg,#F7FAF9 0%,#EEF4F1 100%);min-height:100vh;line-height:1.5;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:860px;margin:0 auto;padding:24px 18px 60px}
+  .serif{font-family:Georgia,"Times New Roman",serif}
+  /* top bar */
+  .topbar{display:flex;align-items:center;gap:12px;margin-bottom:18px;flex-wrap:wrap}
+  .brandtag{font-size:12px;font-weight:700;letter-spacing:1.5px;color:var(--goldDk);text-transform:uppercase}
+  .brandtag b{color:var(--primary)}
+  .card{background:#fff;border-radius:18px;box-shadow:0 10px 34px rgba(10,58,53,.10),0 2px 6px rgba(10,58,53,.05);padding:30px 30px 34px;border:1px solid #E4EDE9}
+  h1.title{font-size:32px;line-height:1.12;color:var(--primary);font-weight:800;letter-spacing:-.3px}
+  .subtitle{color:var(--muted);font-size:15.5px;margin-top:10px;max-width:60ch}
+  .rule{height:4px;width:64px;background:var(--gold);border-radius:3px;margin:16px 0 22px}
+  /* stats */
+  .stats{display:flex;gap:14px;flex-wrap:wrap;margin:8px 0 26px}
+  .stat{background:var(--panel);border-radius:12px;padding:12px 16px;min-width:120px;flex:1}
+  .stat .n{font-size:26px;font-weight:800;color:var(--primary);font-family:Georgia,serif}
+  .stat .l{font-size:12.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;margin-top:2px}
+  /* section label */
+  .seclabel{font-size:12.5px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--primaryDk);margin:22px 0 10px}
+  /* chips */
+  .chips{display:flex;flex-wrap:wrap;gap:9px}
+  .chip{border:1.5px solid var(--line);background:#fff;color:var(--body);border-radius:999px;padding:8px 15px;font-size:13.5px;cursor:pointer;user-select:none;transition:.15s;font-weight:600;display:inline-flex;align-items:center;gap:7px}
+  .chip .dot{width:9px;height:9px;border-radius:50%;background:var(--tag,#888)}
+  .chip:hover{border-color:var(--sageMid)}
+  .chip.on{background:var(--primary);border-color:var(--primary);color:#fff}
+  .chip.on .dot{background:#fff}
+  /* toggle */
+  .modes{display:flex;gap:10px;flex-wrap:wrap;margin-top:4px}
+  .mode{flex:1;min-width:200px;border:1.5px solid var(--line);border-radius:14px;padding:14px 16px;cursor:pointer;transition:.15s;background:#fff}
+  .mode:hover{border-color:var(--sageMid)}
+  .mode.on{border-color:var(--primary);background:var(--tealTint)}
+  .mode h4{font-size:15px;color:var(--ink);margin-bottom:3px;display:flex;align-items:center;gap:8px}
+  .mode p{font-size:12.5px;color:var(--muted)}
+  .mode .ic{font-size:17px}
+  /* number selector */
+  .numsel{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:4px}
+  .numbtn{border:1.5px solid var(--line);background:#fff;border-radius:10px;padding:8px 16px;font-size:14px;font-weight:700;cursor:pointer;color:var(--body);transition:.15s}
+  .numbtn:hover{border-color:var(--sageMid)}
+  .numbtn.on{background:var(--gold);border-color:var(--gold);color:var(--ink)}
+  /* buttons */
+  .btn{border:none;border-radius:12px;padding:15px 26px;font-size:16px;font-weight:700;cursor:pointer;transition:.15s;display:inline-flex;align-items:center;gap:9px}
+  .btn-primary{background:var(--primary);color:#fff}
+  .btn-primary:hover{background:var(--primaryDk)}
+  .btn-primary:disabled{opacity:.4;cursor:not-allowed}
+  .btn-ghost{background:#fff;color:var(--primary);border:1.5px solid var(--line)}
+  .btn-ghost:hover{border-color:var(--primary)}
+  .btn-gold{background:var(--gold);color:var(--ink)}
+  .btn-gold:hover{background:var(--goldDk);color:#fff}
+  .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+  /* quiz */
+  .qtop{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:6px;flex-wrap:wrap}
+  .progresswrap{height:8px;background:var(--panel);border-radius:6px;overflow:hidden;margin:10px 0 22px}
+  .progress{height:100%;background:linear-gradient(90deg,var(--sage),var(--primary));width:0;transition:width .3s}
+  .qcount{font-size:13.5px;color:var(--muted);font-weight:600}
+  .score{font-size:13.5px;font-weight:700;color:var(--primary)}
+  .temaTag{font-size:11.5px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:#fff;background:var(--tag,var(--primary));padding:5px 12px;border-radius:999px}
+  .qtext{font-size:19px;color:var(--ink);font-weight:600;line-height:1.4;margin:14px 0 20px;font-family:Georgia,serif}
+  .opts{display:flex;flex-direction:column;gap:11px}
+  .opt{display:flex;gap:13px;align-items:flex-start;border:1.5px solid var(--line);background:#fff;border-radius:13px;padding:14px 16px;cursor:pointer;transition:.13s;text-align:left;font-size:15.5px;color:var(--body);width:100%}
+  .opt:hover:not(.locked){border-color:var(--sageMid);background:#FBFDFC}
+  .opt .letter{flex:none;width:30px;height:30px;border-radius:50%;background:var(--panel);color:var(--primary);font-weight:800;display:flex;align-items:center;justify-content:center;font-size:14px;transition:.13s}
+  .opt.correct{border-color:var(--ok);background:var(--okBg)}
+  .opt.correct .letter{background:var(--ok);color:#fff}
+  .opt.wrong{border-color:var(--bad);background:var(--badBg)}
+  .opt.wrong .letter{background:var(--bad);color:#fff}
+  .opt.locked{cursor:default}
+  .opt.dim{opacity:.6}
+  .opt .mark{margin-left:auto;font-weight:800;font-size:18px;align-self:center}
+  /* explanation */
+  .explain{margin-top:18px;border-radius:14px;padding:16px 18px 18px;background:var(--goldTint);border:1px solid #EAD9AE;display:none;animation:fade .25s}
+  .explain.show{display:block}
+  .explain .head{font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--goldDk);display:flex;align-items:center;gap:8px;margin-bottom:7px}
+  .explain .ans{font-weight:800;color:var(--ok)}
+  .explain .ans.no{color:var(--bad)}
+  .explain p{font-size:14.5px;color:var(--body);line-height:1.55}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1}}
+  .navrow{display:flex;justify-content:space-between;align-items:center;margin-top:22px;gap:12px;flex-wrap:wrap}
+  .hint{font-size:12.5px;color:var(--muted)}
+  /* results */
+  .scorebig{font-family:Georgia,serif;font-size:60px;font-weight:800;line-height:1;color:var(--primary)}
+  .scorebig small{font-size:26px;color:var(--muted)}
+  .resmsg{font-size:17px;color:var(--ink);font-weight:600;margin-top:6px}
+  .bars{margin:24px 0 8px;display:flex;flex-direction:column;gap:12px}
+  .bar .row{display:flex;justify-content:space-between;font-size:13.5px;margin-bottom:5px;color:var(--body)}
+  .bar .track{height:10px;background:var(--panel);border-radius:6px;overflow:hidden}
+  .bar .fill{height:100%;border-radius:6px}
+  .review{margin-top:12px;display:flex;flex-direction:column;gap:12px}
+  .rev{border:1px solid var(--line);border-left:5px solid var(--bad);border-radius:12px;padding:14px 16px;background:#fff}
+  .rev.ok{border-left-color:var(--ok)}
+  .rev .q{font-weight:700;color:var(--ink);font-size:15px;margin-bottom:6px}
+  .rev .line{font-size:13.5px;margin:2px 0}
+  .rev .you{color:var(--bad)} .rev .cor{color:var(--ok)}
+  .rev .cm{font-size:13px;color:var(--muted);margin-top:6px;line-height:1.5}
+  .rev .tt{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--tag,var(--primary))}
+  footer{text-align:center;color:var(--muted);font-size:12px;margin-top:26px;line-height:1.6}
+  .hide{display:none!important}
+  @media(max-width:560px){.card{padding:22px 18px}h1.title{font-size:25px}.qtext{font-size:17px}}
 </style>
 </head>
 <body>
-
-<!-- CABEÇALHO -->
-<header class="cabecalho">
-  <div class="cabecalho-topo">
-    <span>Universidade Federal do Maranhão — UFMA</span>
-    <span>·</span>
-    <b>Campus Bacabal</b>
-    <span>·</span>
-    <span>PPGATS — Coleta de Dados Acadêmicos</span>
+<div class="wrap">
+  <div class="topbar">
+    <span class="brandtag"><b>UFMA · CCBa</b> · CNBA0309 — Parasitologia com Ênfase em Doenças Tropicais</span>
   </div>
-  <div class="cabecalho-principal">
-    <div class="brasao">🌿</div>
-    <div class="cabecalho-texto">
-      <h1>Levantamento de Projetos de Pesquisa Ativos</h1>
-      <p>Programa de Pós-Graduação em Ambiente, Tecnologia e Sociedade — Corpo Docente</p>
+
+  <!-- ===== START ===== -->
+  <section id="start" class="card">
+    <h1 class="title serif">Banco de Questões</h1>
+    <p class="subtitle">Aula 1 — Introdução à Parasitologia <b>com Imunologia</b>. Questões objetivas com correção na hora e resposta comentada, para revisar e fixar o conteúdo da manhã.</p>
+    <div class="rule"></div>
+    <div class="stats">
+      <div class="stat"><div class="n" id="stTotal">–</div><div class="l">questões</div></div>
+      <div class="stat"><div class="n" id="stTemas">5</div><div class="l">temas</div></div>
+      <div class="stat"><div class="n">A–D</div><div class="l">múltipla escolha</div></div>
+      <div class="stat"><div class="n">100%</div><div class="l">comentadas</div></div>
     </div>
-  </div>
-</header>
-<div class="barra-ouro"></div>
 
-<!-- INTRO -->
-<div class="intro-box" style="margin: 36px auto; padding: 20px 28px; max-width: 860px;">
-  <strong>Atenção:</strong> Ao preencher a linha de pesquisa, descreva de forma objetiva como os seus projetos se articulam com a linha selecionada, fundamentando a aderência temática para fins de composição do APCN/CAPES.
+    <div class="seclabel">1 · Escolha os temas</div>
+    <div class="chips" id="temaChips"></div>
+
+    <div class="seclabel">2 · Modo</div>
+    <div class="modes">
+      <div class="mode on" data-mode="estudo" onclick="setMode('estudo')">
+        <h4><span class="ic">📖</span> Estudo</h4>
+        <p>Correção e comentário aparecem logo após cada resposta.</p>
+      </div>
+      <div class="mode" data-mode="prova" onclick="setMode('prova')">
+        <h4><span class="ic">📝</span> Prova</h4>
+        <p>Sem feedback durante o teste; o gabarito comentado vem no final.</p>
+      </div>
+    </div>
+
+    <div class="seclabel">3 · Quantas questões</div>
+    <div class="numsel" id="numSel"></div>
+
+    <div class="actions">
+      <button class="btn btn-primary" id="startBtn" onclick="startQuiz()">Começar ▸</button>
+      <label style="display:flex;align-items:center;gap:8px;font-size:14px;color:var(--muted);cursor:pointer">
+        <input type="checkbox" id="shuffleChk" checked style="width:17px;height:17px;accent-color:var(--primary)"> Embaralhar questões e alternativas
+      </label>
+    </div>
+  </section>
+
+  <!-- ===== QUIZ ===== -->
+  <section id="quiz" class="card hide">
+    <div class="qtop">
+      <span class="qcount" id="qcount">Questão 1 de 10</span>
+      <span class="temaTag" id="qtema">Tema</span>
+      <span class="score" id="qscore">Acertos: 0</span>
+    </div>
+    <div class="progresswrap"><div class="progress" id="prog"></div></div>
+    <div class="qtext serif" id="qtext">…</div>
+    <div class="opts" id="opts"></div>
+    <div class="explain" id="explain">
+      <div class="head"><span id="exIcon">✔</span> <span id="exVerdict" class="ans">Resposta comentada</span></div>
+      <p id="exText"></p>
+    </div>
+    <div class="navrow">
+      <span class="hint" id="hint">Dica: use as teclas 1–4 para responder e Enter para avançar.</span>
+      <button class="btn btn-primary hide" id="nextBtn" onclick="nextQ()">Próxima ▸</button>
+    </div>
+  </section>
+
+  <!-- ===== RESULTS ===== -->
+  <section id="results" class="card hide">
+    <div class="seclabel">Resultado</div>
+    <div class="scorebig"><span id="rPct">0</span><small>%</small></div>
+    <div class="resmsg" id="rMsg">—</div>
+    <div class="stat" style="margin-top:14px;display:inline-block"><span id="rRaw">0 de 0</span> acertos · modo <b id="rMode">estudo</b></div>
+    <div class="seclabel" style="margin-top:26px">Desempenho por tema</div>
+    <div class="bars" id="bars"></div>
+    <div class="seclabel" style="margin-top:24px">Revisão comentada</div>
+    <div class="review" id="review"></div>
+    <div class="actions">
+      <button class="btn btn-primary" onclick="restart('all')">↻ Refazer tudo</button>
+      <button class="btn btn-gold" id="redoWrong" onclick="restart('wrong')">Refazer só as erradas</button>
+      <button class="btn btn-ghost" onclick="toStart()">◂ Início</button>
+    </div>
+  </section>
+
+  <footer>
+    Profa. Dra. Kerolayne de Melo Nogueira · Licenciatura em Ciências Naturais — Biologia · 2026.3<br>
+    Material de estudo. Os dados epidemiológicos seguem MS (jan/2025) e OMS (2025).
+  </footer>
 </div>
-
-<!-- PROGRESSO -->
-<div class="progresso-wrap">
-  <div class="progresso-label">
-    <span id="progresso-txt">Progresso do preenchimento</span>
-    <span id="progresso-pct">0%</span>
-  </div>
-  <div class="progresso-barra">
-    <div class="progresso-fill" id="progresso-fill" style="width:0%"></div>
-  </div>
-</div>
-
-<!-- FORMULÁRIO -->
-<form class="form-container" id="formulario" action="https://formspree.io/f/mdajepvq" method="POST">
-
-  <!-- SEÇÃO 1: IDENTIFICAÇÃO DO DOCENTE -->
-  <div class="secao">
-    <div class="secao-header">
-      <div class="secao-num">1</div>
-      <div>
-        <div class="secao-titulo">Identificação do Docente</div>
-        <div class="secao-subtitulo">Dados institucionais e de contato</div>
-      </div>
-    </div>
-    <div class="secao-body">
-      <div class="campo-grupo">
-        <div class="campo">
-          <label>Nome completo <span class="req">*</span></label>
-          <select name="docente_nome" required id="docente_nome" onchange="atualizarProgresso()">
-            <option value="">Selecione seu nome</option>
-            <option>André Luiz Borba do Nascimento</option>
-            <option>Ariel Nonato Almeida de Abreu Silva</option>
-            <option>Elidio Armando Exposto Guarçoni</option>
-            <option>Emerson Dalla Chieza</option>
-            <option>Filipa Alexandra de Abreu Paulos (Docente Externa)</option>
-            <option>Hawbertt Rocha Costa</option>
-            <option>Joel Felix Silva Diniz Filho</option>
-            <option>Juliana Rodrigues Rocha</option>
-            <option>Kerolayne de Melo Nogueira</option>
-            <option>Leonardo da Silva Chaves</option>
-            <option>Leiz Maria Costa Veras</option>
-            <option>Marconio Martins Rodrigues</option>
-            <option>Michel Ricardo de Barros Chaves</option>
-            <option>Monique Helen Ribeiro Lima</option>
-            <option>Raysa Valéria Carvalho Saraiva</option>
-            <option value="outro">Outro (não listado)</option>
-          </select>
-        </div>
-        <div class="campo">
-          <label>E-mail institucional <span class="req">*</span></label>
-          <input type="email" name="docente_email" placeholder="nome@ufma.br" required onchange="atualizarProgresso()">
-        </div>
-      </div>
-      <div class="campo-grupo">
-      <div class="campo-grupo">
-        <div class="campo">
-          <label>Linha de pesquisa no PPGATS <span class="req">*</span></label>
-          <select name="linha_pesquisa" required onchange="atualizarProgresso()">
-            <option value="">Selecione a linha</option>
-            <option>Biodiversidade</option>
-            <option>Tecnologia Ambiental</option>
-            <option>Sustentabilidade e Educação Ambiental</option>
-          </select>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
-  <!-- SEÇÃO 2: PROJETOS DE PESQUISA ATIVOS -->
-  <div class="secao">
-    <div class="secao-header">
-      <div class="secao-num">2</div>
-      <div>
-        <div class="secao-titulo">Projetos de Pesquisa em Andamento</div>
-        <div class="secao-subtitulo">Informe todos os projetos ativos (com início e sem conclusão até a data atual)</div>
-      </div>
-    </div>
-    <div class="secao-body">
-      <div id="projetos-container">
-        <!-- Bloco 1 — gerado via JS -->
-      </div>
-      <button type="button" class="btn-adicionar" onclick="adicionarProjeto()">
-        <span style="font-size:18px">＋</span> Adicionar outro projeto de pesquisa
-      </button>
-    </div>
-  </div>
-
-  
-
-  <!-- SEÇÃO 4: INFRAESTRUTURA E PARCERIAS -->
-  <div class="secao">
-    <div class="secao-header">
-      <div class="secao-num">3</div>
-      <div>
-        <div class="secao-titulo">Infraestrutura de Pesquisa e Parcerias</div>
-        <div class="secao-subtitulo">Laboratórios, grupos de pesquisa e redes de colaboração</div>
-      </div>
-    </div>
-    <div class="secao-body">
-      <div class="campo-grupo">
-        <div class="campo">
-          <label>Laboratório(s) onde desenvolve pesquisa</label>
-          <input type="text" name="laboratorios" placeholder="Ex.: Lab. de Botânica BMA / UFMA-Bacabal">
-        </div>
-        <div class="campo">
-          <label>Grupo(s) de pesquisa CNPq certificado(s)</label>
-          <input type="text" name="grupos_pesquisa" placeholder="Ex.: GEAMB — Grupo de Ecologia Ambiental">
-        </div>
-      </div>
-      <div class="campo-grupo full">
-        <div class="campo">
-          <label>Parcerias institucionais ativas <span class="hint">(nacionais ou internacionais)</span></label>
-          <textarea name="parcerias" rows="3" placeholder="Ex.: UFV, UFPE, Universidade de Exeter (UK), FAPEMA, Embrapa"></textarea>
-        </div>
-      </div>
-      <div class="campo-grupo full">
-        <div class="campo">
-          <label>O docente possui acesso a equipamentos ou instalações especiais relevantes para o PPGATS?</label>
-          <textarea name="equipamentos" rows="3" placeholder="Ex.: Cromatógrafo a gás, Microscópio eletrônico de varredura, Herbário BMA, Câmara climática..."></textarea>
-        </div>
-      </div>
-      <div class="campo-grupo full">
-        <div class="campo">
-          <label>Pertence a redes de pesquisa temáticas? <span class="hint">(INCT, PRONEX, redes CAPES etc.)</span></label>
-          <input type="text" name="redes_pesquisa" placeholder="Ex.: INCT da Biodiversidade, Rede Nordeste de Biotecnologia (RENORBIO)">
-        </div>
-      </div>
-    </div>
-  </div>
-
-  
-
-  <!-- SEÇÃO 7: INFORMAÇÕES COMPLEMENTARES -->
-  <div class="secao">
-    <div class="secao-header">
-      <div class="secao-num">4</div>
-      <div>
-        <div class="secao-titulo">Projetos Futuros e Financiamento</div>
-        <div class="secao-subtitulo">Editais em preparação ou submissão que envolverão o PPGATS</div>
-      </div>
-    </div>
-    <div class="secao-body">
-      <div class="campo-grupo full">
-        <div class="campo">
-          <label>Há projetos planejados ou em fase de submissão de financiamento que envolverão o PPGATS?</label>
-          <textarea name="projetos_futuros" rows="5" placeholder="Descreva editais pretendidos, parcerias em negociação, chamadas FAPEMA, CNPq, CAPES etc."></textarea>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- BOTÃO SUBMIT -->
-  <div class="submit-area">
-    <button type="submit" class="btn-submit">Enviar Informações ao PPGATS</button>
-
-  </div>
-
-  <!-- Campo oculto para identificação -->
-  <input type="hidden" name="_subject" value="[PPGATS/UFMA] Projetos de Pesquisa Ativos — Formulário Docente">
-  <input type="hidden" name="_next" value="">
-  <input type="text" name="_gotcha" style="display:none">
-
-</form>
-
-<!-- OVERLAY SUCESSO -->
-<div class="sucesso-overlay" id="sucesso-overlay">
-  <div class="sucesso-box">
-    <div class="sucesso-icon">✅</div>
-    <h2>Formulário enviado com sucesso!</h2>
-    <p>Suas informações foram encaminhadas à coordenação do PPGATS. Guarde este comprovante de envio. Em caso de dúvidas, entre em contato pelo e-mail da coordenação do programa.</p>
-    <button class="btn-fechar" onclick="fecharSucesso()">Fechar</button>
-  </div>
-</div>
-
-<footer>
-  <b>PPGATS — Programa de Pós-Graduação em Ambiente, Tecnologia e Sociedade</b><br>
-  Universidade Federal do Maranhão · Campus Bacabal · Proposta APCN/CAPES · Área 49 — Ciências Ambientais
-</footer>
 
 <script>
-  let contadorProjeto = 0;
+/* ============ BANCO DE QUESTÕES ============ */
+const TEMAS = {
+  conc:{nome:"Conceitos fundamentais", cor:"#0E4C46"},
+  soc:{nome:"Doença tropical & Saúde Pública", cor:"#D64C2F"},
+  pat:{nome:"Patogenia", cor:"#B9831A"},
+  imu:{nome:"Imunologia", cor:"#3E7C68"},
+  proto:{nome:"Protozoários", cor:"#6A4C93"}
+};
+const QUESTIONS = [
+  {t:"conc", q:"Sobre os tipos de hospedeiro, é correto afirmar que o hospedeiro definitivo é aquele em que:",
+   o:["o parasito permanece por mais tempo","ocorre a reprodução sexuada (ou se encontra a forma adulta)","a doença é sempre mais grave","o parasito foi descrito pela primeira vez"], c:1,
+   e:"O hospedeiro definitivo define-se pela reprodução sexuada, não pelo tempo nem pela gravidade. Na malária, por exemplo, o hospedeiro definitivo é o mosquito Anopheles; o ser humano, onde há multiplicação assexuada e doença, é o intermediário."},
+  {t:"conc", q:"Um vetor é classificado como biológico quando:",
+   o:["apenas transporta o parasito no corpo ou nas patas","o parasito se desenvolve e/ou se multiplica em seu interior","não participa do ciclo do parasito","é sempre um molusco de água doce"], c:1,
+   e:"No vetor biológico (ex.: o flebotomíneo da leishmaniose) o parasito cumpre parte obrigatória do ciclo — por isso é insubstituível, e combatê-lo interrompe a transmissão. O vetor mecânico (ex.: a mosca) apenas transporta."},
+  {t:"conc", q:"A diferença prática entre ciclo monoxeno e heteroxeno está sobretudo em:",
+   o:["quantos ovos o parasito produz","o número de hospedeiros necessários — e, com isso, a estratégia de profilaxia","o tamanho do parasito adulto","a cor da forma infectante"], c:1,
+   e:"O monoxeno completa-se num único hospedeiro (ex.: Ascaris) — profilaxia pelo saneamento; o heteroxeno exige dois ou mais (ex.: leishmaniose) — profilaxia no elo mais vulnerável (vetor, reservatório)."},
+  {t:"conc", q:"O conceito de reservatório refere-se a:",
+   o:["o indivíduo doente que procura o serviço de saúde","a fonte que mantém o parasito na natureza, garantindo novas infecções","o mesmo que hospedeiro intermediário","o local do corpo onde o parasito se instala"], c:1,
+   e:"Reservatório é um conceito de população/manutenção: a fonte (frequentemente um animal, como o cão na leishmaniose) que sustenta o parasito no ambiente. Por isso não se controla uma zoonose tratando só os doentes humanos."},
+  {t:"conc", q:"Na maioria das protozooses intestinais, a regra de transmissão é:",
+   o:["transmite-se o trofozoíto e adoece-se pelo cisto","transmite-se o cisto e adoece-se pelo trofozoíto","ambas as formas transmitem igualmente","não há forma de resistência envolvida"], c:1,
+   e:"O cisto é a forma de resistência que sobrevive no ambiente e é ingerida (transmite); o trofozoíto é a forma ativa que coloniza e causa dano (adoece). Exceção notável: o Trichomonas, que não forma cisto."},
+  {t:"conc", q:"Sobre a nomenclatura científica, assinale a forma CORRETA:",
+   o:["trypanosoma cruzi","Trypanosoma Cruzi","Trypanosoma cruzi","TRYPANOSOMA CRUZI"], c:2,
+   e:"No binômio, o gênero leva inicial maiúscula e o epíteto específico minúscula, ambos em itálico (ou sublinhado, se manuscrito): Trypanosoma cruzi. O erro de caixa no epíteto é o mais comum."},
 
-  function criarBlocoProjeto(num) {
-    const id = `projeto_${num}`;
-    return `
-    <div class="projeto-bloco" id="${id}">
-      <div class="projeto-bloco-header">
-        <div class="projeto-bloco-titulo">
-          <div class="projeto-num-badge">${num}</div>
-          Projeto de Pesquisa ${num}
-        </div>
-        ${num > 1 ? `<button type="button" class="btn-remover" onclick="removerProjeto('${id}')">✕ Remover</button>` : ''}
-      </div>
+  {t:"soc", q:"Segundo a leitura crítica do conceito, o que torna uma doença \"tropical\" é, principalmente:",
+   o:["o calor e a umidade dos trópicos","a determinação social (pobreza, ausência de saneamento) mais do que o clima","a presença exclusiva de vírus","uma característica genética das populações"], c:1,
+   e:"O clima favorece, mas não determina: malária e outras \"tropicais\" existiram em regiões temperadas e recuaram com saneamento, moradia e renda, sem que o clima mudasse. A tropicalidade é, em grande parte, socialmente construída."},
+  {t:"soc", q:"Chamar uma doença de \"negligenciada\" significa, principalmente, que ela:",
+   o:["é rara e de pouca importância","recebe pouco investimento e prioridade por atingir populações pobres e sem voz","é causada apenas por protozoários","não possui tratamento conhecido"], c:1,
+   e:"\"Negligenciada\" é um diagnóstico sobre uma escolha coletiva — a negligência científica (lacuna 10/90), política e social. Não se refere à raridade: são doenças comuns e de alta carga, concentradas na pobreza."},
+  {t:"soc", q:"No modelo em camadas dos determinantes sociais da saúde (Dahlgren e Whitehead), a leitura correta é que:",
+   o:["a camada individual determina todas as demais","as camadas externas (renda, saneamento, política) condicionam as internas","apenas a genética importa","os determinantes sociais não afetam parasitoses"], c:1,
+   e:"Lê-se de fora para dentro: exigir \"estilo de vida saudável\" de quem não tem água tratada nem saneamento é ler o diagrama ao contrário. As condições de vida determinam o que é possível na escolha individual."},
+  {t:"soc", q:"O ciclo vicioso pobreza–doença é descrito como bidirecional porque:",
+   o:["a pobreza causa a doença, e o assunto se encerra aí","a doença causa a pobreza, e o assunto se encerra aí","a pobreza expõe à doença e a doença, por sua vez, aprofunda a pobreza","não há relação entre os dois"], c:2,
+   e:"A pobreza expõe (falta de saneamento, desnutrição) e a doença rouba escola, trabalho e futuro, aprofundando a pobreza que a originou. Romper qualquer elo — inclusive pela educação — é fazer Saúde Pública."},
+  {t:"soc", q:"O Maranhão concentra grande carga de doenças negligenciadas em parte porque:",
+   o:["tem o clima mais quente do país","pertence, ao mesmo tempo, ao Nordeste e à Amazônia Legal, com alta pobreza","não tem serviços de saúde","é o menor estado do país"], c:1,
+   e:"A dupla pertença (Nordeste + Amazônia Legal), somada à pobreza e ao baixo saneamento, coloca o estado na interseção de dois Brasis de alta carga parasitária — e o torna epicentro nacional da leishmaniose visceral."},
 
-      <div class="campo-grupo full">
-        <div class="campo">
-          <label>Título do projeto <span class="req">*</span></label>
-          <input type="text" name="proj${num}_titulo" placeholder="Título completo conforme registro institucional" ${num===1?'required':''}>
-        </div>
-      </div>
+  {t:"pat", q:"A ação espoliadora dos ancilostomídeos causa, sobretudo:",
+   o:["obstrução intestinal aguda","anemia ferropriva por perda crônica de sangue","abscesso hepático","meningite"], c:1,
+   e:"Os ancilostomídeos consomem sangue continuamente; a perda crônica de ferro leva à anemia ferropriva, com impacto no desenvolvimento e no aprendizado — um mecanismo biológico com desdobramento social direto."},
+  {t:"pat", q:"O novelo de Ascaris obstruindo o intestino é exemplo de ação:",
+   o:["tóxica","mecânica (obstrutiva)","imunopatológica","espoliadora"], c:1,
+   e:"A ação mecânica é o dano por massa/ocupação: muitos vermes formam um novelo que obstrui a luz intestinal; cisticercos ocupam espaço no cérebro. Quanto maior a carga, maior o dano."},
+  {t:"pat", q:"A imunopatologia (a \"defesa que adoece\") é bem ilustrada:",
+   o:["pelo granuloma da esquistossomose, cuja fibrose lesa o fígado","pela simples presença do verme no intestino","pela ação direta de uma toxina","pela reprodução do parasito no sangue"], c:0,
+   e:"O granuloma isola o ovo (protetor), mas sua repetição deposita fibrose (Symmers) e causa hipertensão portal. Quem lesa o órgão é a resposta imune, não o verme — o \"fogo amigo\" do sistema de defesa."},
+  {t:"pat", q:"A gravidade de uma parasitose depende, essencialmente, de:",
+   o:["apenas do número de parasitos","apenas do estado do hospedeiro","da combinação carga parasitária × estado do hospedeiro × resposta imune","da cor das fezes"], c:2,
+   e:"A mesma infecção adoece pessoas de formas diferentes: gravidade = carga × estado do corpo (nutrição, idade, imunidade) × qualidade da resposta. E o \"estado do corpo\" depende, no fundo, de condições sociais."},
+  {t:"pat", q:"O portador assintomático é epidemiologicamente importante porque:",
+   o:["nunca transmite o parasito","está infectado sem sintomas, mas pode transmitir e sustentar a cadeia","é sempre imune","já foi tratado"], c:1,
+   e:"Entre \"ter o parasito\" e \"estar doente\" há um espectro. O portador assintomático elimina formas infectantes silenciosamente — por isso a busca ativa procura também os infectados sem sintomas."},
 
-      <div class="campo-grupo tres">
-        <div class="campo">
-          <label>Situação atual</label>
-          <select name="proj${num}_situacao">
-            <option value="">Selecione</option>
-            <option>Em andamento — com financiamento</option>
-            <option>Em andamento — sem financiamento externo</option>
-            <option>Em andamento — em espera de resultado</option>
-            <option>Recém aprovado — a iniciar</option>
-          </select>
-        </div>
-        <div class="campo">
-          <label>Data de início</label>
-          <input type="date" name="proj${num}_inicio">
-        </div>
-        <div class="campo">
-          <label>Previsão de conclusão</label>
-          <input type="date" name="proj${num}_fim">
-        </div>
-      </div>
+  {t:"imu", q:"Qual característica é EXCLUSIVA da imunidade adaptativa?",
+   o:["resposta imediata, em minutos","reconhecimento inespecífico de padrões","especificidade e memória imunológica","atuação por barreiras e fagócitos"], c:2,
+   e:"A adaptativa é específica e guarda memória (a base da vacina); a inata é imediata e inespecífica. As duas cooperam — e a inata inclusive instrui, cedo, o perfil (Th1/Th2) que a adaptativa vai assumir."},
+  {t:"imu", q:"No reconhecimento do parasito pela imunidade inata, o PAMP é:",
+   o:["o receptor da célula de defesa","o padrão molecular do patógeno que denuncia sua presença","um tipo de anticorpo","uma citocina reguladora"], c:1,
+   e:"O PAMP é a \"cara de suspeito\" — um padrão molecular conservado do parasito. O receptor que o lê é o PRR (ex.: os TLR). Esse encontro inicial orienta quais citocinas serão liberadas e, com elas, o perfil da resposta."},
+  {t:"imu", q:"Entre as funções do sistema complemento NÃO se inclui:",
+   o:["opsonização (marcar o parasito para a fagocitose)","inflamação (recrutar células)","lise da membrana do alvo","produção de memória imunológica específica"], c:3,
+   e:"O complemento opsoniza, inflama e lisa (complexo de ataque à membrana) — mas é da imunidade inata e não gera memória específica. Memória é atributo da imunidade adaptativa (linfócitos)."},
+  {t:"imu", q:"A molécula que \"apresenta\" fragmentos do parasito aos linfócitos T é:",
+   o:["a IgA","o MHC","o complemento","a histamina"], c:1,
+   e:"O MHC é o \"cartaz\" que a célula usa para exibir pedaços do que produz por dentro (classe I, ao CD8) ou capturou por fora (classe II, ao CD4). A localização do parasito decide qual resposta é chamada."},
+  {t:"imu", q:"Sobre os linfócitos T, é correto dizer que:",
+   o:["o CD4 é o atirador que mata células infectadas","o CD8 apenas produz anticorpos","o CD4 coordena a resposta (o \"general\") e o CD8 destrói células infectadas (o \"atirador\")","ambos produzem cistos"], c:2,
+   e:"O CD4 comanda enviando citocinas e escolhe a tática (Th1/Th2); o CD8 executa, matando as células tomadas pelo parasito. Contra intracelulares, a qualidade do comando protege mais que a quantidade de anticorpos."},
+  {t:"imu", q:"Contra parasitos intracelulares (ex.: Leishmania no macrófago), a resposta protetora é principalmente:",
+   o:["Th2, com IgE e eosinófilos","Th1, com IFN-gama ativando o macrófago","produção maciça de anticorpos","resposta reguladora (Treg)"], c:1,
+   e:"O parasito escondido dentro da célula só é morto quando o macrófago é ATIVADO pelo IFN-gama (perfil Th1). Anticorpos e Th2 não alcançam o parasito intracelular."},
+  {t:"imu", q:"A resposta do tipo Th2, típica contra helmintos, caracteriza-se por:",
+   o:["ativação do macrófago por IFN-gama","muco, eosinófilos e anticorpo IgE (lógica de expulsão)","produção de óxido nítrico intracelular","ausência de citocinas"], c:1,
+   e:"Contra o verme grande demais para ser fagocitado, o corpo tenta expulsá-lo: muco, motilidade, eosinófilos e IgE. Por isso a eosinofilia no hemograma é pista de helmintíase."},
+  {t:"imu", q:"A citocina considerada a \"assinatura\" do perfil Th1 é:",
+   o:["a IL-4","o IFN-gama","a IL-10","a IL-5"], c:1,
+   e:"O IFN-gama é a citocina-ordem do Th1: ativa o macrófago a destruir o parasito que abriga. IL-4/5/13 organizam o Th2; a IL-10 é reguladora (freia a resposta)."},
+  {t:"imu", q:"O principal anticorpo da defesa das mucosas (intestinal, respiratória, urogenital) é:",
+   o:["a IgG","a IgM","a IgA secretora","a IgE"], c:2,
+   e:"A IgA reveste a superfície da mucosa e impede a adesão do parasito — a \"alfândega\" do corpo. É a defesa central contra os protozoários intestinais (Entamoeba, Giardia)."},
+  {t:"imu", q:"Na leishmaniose visceral ativa há muitos anticorpos e, ainda assim, doença grave. Por quê?",
+   o:["os anticorpos causam a doença","a resposta protetora (Th1, celular) está deprimida, e o anticorpo não alcança o parasito intracelular","o parasito é extracelular","falta produção de IgE"], c:1,
+   e:"É o exemplo-mãe de que \"muito anticorpo\" não é proteção: contra intracelulares protege a resposta celular (Th1), que na LV está suprimida (IL-10 alta). Sem a Th1, o parasito se espalha por baço, fígado e medula."},
+  {t:"imu", q:"São estratégias de EVASÃO imune usadas por parasitos, EXCETO:",
+   o:["variação antigênica (trocar as moléculas de superfície)","vida intracelular (esconder-se dentro da célula)","imunomodulação (induzir resposta reguladora)","produção de memória imunológica pelo hospedeiro"], c:3,
+   e:"Variação antigênica, vida intracelular e imunomodulação são táticas do parasito para escapar da defesa. A memória imunológica é uma resposta do hospedeiro — não uma evasão do parasito."},
+  {t:"imu", q:"Uma eosinofilia acentuada no hemograma sugere investigar, sobretudo:",
+   o:["infecção por protozoário intracelular","helmintíase (resposta tipo Th2)","infecção bacteriana","deficiência de IgG"], c:1,
+   e:"Os helmintos disparam resposta Th2, que expande os eosinófilos e produz IgE. A eosinofilia é pista de verminose, embora não indique a espécie."},
 
-      <div class="campo-grupo">
-        <div class="campo">
-          <label>Agência(s) financiadora(s)</label>
-          <div class="check-grid" style="margin-top:6px; grid-template-columns: repeat(auto-fill, minmax(150px,1fr));">
-            <label class="check-item"><input type="checkbox" name="proj${num}_financ" value="CNPq"> <span>CNPq</span></label>
-            <label class="check-item"><input type="checkbox" name="proj${num}_financ" value="CAPES"> <span>CAPES</span></label>
-            <label class="check-item"><input type="checkbox" name="proj${num}_financ" value="FAPEMA"> <span>FAPEMA</span></label>
-            <label class="check-item"><input type="checkbox" name="proj${num}_financ" value="FINEP"> <span>FINEP</span></label>
-            <label class="check-item"><input type="checkbox" name="proj${num}_financ" value="Sem financiamento externo"> <span>Sem financiamento</span></label>
-            <label class="check-item"><input type="checkbox" name="proj${num}_financ" value="Outro financiador"> <span>Outro</span></label>
-          </div>
-        </div>
-        <div class="campo">
-          <label>Função do docente no projeto</label>
-          <select name="proj${num}_funcao">
-            <option value="">Selecione</option>
-            <option>Coordenador / Pesquisador Principal</option>
-            <option>Pesquisador Colaborador</option>
-            <option>Co-investigador</option>
-            <option>Bolsista de Produtividade vinculado</option>
-          </select>
-        </div>
-      </div>
+  {t:"proto", q:"A principal diferença entre um protozoário e uma bactéria é que o protozoário:",
+   o:["é procarionte, sem núcleo","é eucarionte, com núcleo verdadeiro e organelas","é sempre maior que um verme","não causa doença"], c:1,
+   e:"Protozoário é eucarionte (núcleo e organelas); bactéria é procarionte. A proximidade bioquímica com nossas células torna o tratamento das protozooses, muitas vezes, mais delicado."},
+  {t:"proto", q:"O grupo de protozoários que mais importa para o Maranhão, por abrigar a Leishmania, é o dos:",
+   o:["rizópodes","flagelados intestinais","hemoflagelados","apicomplexa"], c:2,
+   e:"Os hemoflagelados (flagelados do sangue e dos tecidos) incluem Leishmania e Trypanosoma cruzi. A leishmaniose visceral, protagonista da disciplina, pertence a este grupo."},
+  {t:"proto", q:"A febre em ondas, com periodicidade quase marcada, na malária, deve-se à:",
+   o:["produção de anticorpos","esquizogonia sincronizada, com ruptura simultânea das hemácias","migração larval pelo pulmão","formação de cistos"], c:1,
+   e:"Nos Apicomplexa, a divisão múltipla (esquizogonia) dentro da hemácia culmina em rupturas sincronizadas que liberam parasitos e substâncias pirogênicas de uma vez — daí os acessos febris periódicos."}
+];
 
-      <div class="campo-grupo">
-        <div class="campo">
-          <label>Número do processo / edital de origem</label>
-          <input type="text" name="proj${num}_processo" placeholder="Ex.: CNPq 312345/2023-1">
-        </div>
-        <div class="campo">
-          <label>Valor total aprovado (R$) <span class="hint">(se houver)</span></label>
-          <input type="text" name="proj${num}_valor" placeholder="Ex.: R$ 150.000,00">
-        </div>
-      </div>
+/* ============ ESTADO ============ */
+let selTemas = new Set(Object.keys(TEMAS));
+let mode = "estudo";
+let numChoice = 15;
+let pool = [], idx = 0, answered = false, score = 0, results = [];
 
-      <div class="campo-grupo full">
-        <div class="campo">
-          <label>Resumo do projeto <span class="req">*</span></label>
-          <textarea name="proj${num}_resumo" rows="4" placeholder="Descreva o objeto, objetivo principal, metodologia e resultados esperados." ${num===1?'required':''}></textarea>
-        </div>
-      </div>
-
-      <div class="campo-grupo">
-        <div class="campo">
-          <label>Aderência à Linha de Pesquisa do PPGATS</label>
-          <select name="proj${num}_linha">
-            <option value="">Selecione</option>
-            <option>Biodiversidade</option>
-            <option>Tecnologia Ambiental</option>
-            <option>Sustentabilidade e Educação Ambiental</option>
-          </select>
-        </div>
-        <div class="campo">
-          <label>O projeto prevê bolsas para estudantes de pós-graduação?</label>
-          <select name="proj${num}_bolsas">
-            <option value="">Selecione</option>
-            <option>Sim — mestrado</option>
-            <option>Sim — doutorado</option>
-            <option>Sim — mestrado e doutorado</option>
-            <option>Não</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="campo-grupo full">
-        <div class="campo">
-          <label>Palavras-chave do projeto <span class="hint">(digite e pressione Enter ou vírgula)</span></label>
-          <div class="tag-input-wrap" onclick="this.querySelector('.tag-input-real').focus()" id="tags-wrap-${num}">
-            <input class="tag-input-real" type="text" placeholder="Ex.: biorremediação, Cerrado, contaminantes..." 
-              onkeydown="adicionarTag(event, ${num})" id="tag-input-${num}">
-          </div>
-          <input type="hidden" name="proj${num}_palavras_chave" id="tags-hidden-${num}">
-        </div>
-      </div>
-    </div>`;
-  }
-
-  function adicionarProjeto() {
-    contadorProjeto++;
-    const container = document.getElementById('projetos-container');
-    const div = document.createElement('div');
-    div.innerHTML = criarBlocoProjeto(contadorProjeto);
-    container.appendChild(div.firstElementChild);
-    container.lastElementChild.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
-
-  function removerProjeto(id) {
-    const el = document.getElementById(id);
-    if (el) { el.style.opacity = '0'; el.style.transform = 'scale(0.97)'; el.style.transition = 'all 0.2s'; setTimeout(() => el.remove(), 200); }
-  }
-
-  function adicionarTag(event, num) {
-    if (event.key === 'Enter' || event.key === ',') {
-      event.preventDefault();
-      const input = document.getElementById(`tag-input-${num}`);
-      const val = input.value.trim().replace(/,$/, '');
-      if (!val) return;
-      const wrap = document.getElementById(`tags-wrap-${num}`);
-      const hidden = document.getElementById(`tags-hidden-${num}`);
-      const tag = document.createElement('div');
-      tag.className = 'tag';
-      tag.innerHTML = `${val} <button type="button" onclick="removerTag(this, ${num})">×</button>`;
-      wrap.insertBefore(tag, input);
-      input.value = '';
-      atualizarTagsHidden(num);
-    }
-  }
-
-  function removerTag(btn, num) {
-    btn.closest('.tag').remove();
-    atualizarTagsHidden(num);
-  }
-
-  function atualizarTagsHidden(num) {
-    const wrap = document.getElementById(`tags-wrap-${num}`);
-    const tags = [...wrap.querySelectorAll('.tag')].map(t => t.textContent.trim().replace('×','').trim());
-    document.getElementById(`tags-hidden-${num}`).value = tags.join(', ');
-  }
-
-  // PROGRESSO
-  function atualizarProgresso() {
-    const campos = ['docente_nome', 'docente_lattes', 'docente_email', 'linha_pesquisa', 'articulacao_territorio'];
-    let preenchidos = 0;
-    campos.forEach(id => {
-      const el = document.querySelector(`[name="${id}"]`);
-      if (el && el.value.trim()) preenchidos++;
-    });
-    const pct = Math.round((preenchidos / campos.length) * 100);
-    document.getElementById('progresso-fill').style.width = pct + '%';
-    document.getElementById('progresso-pct').textContent = pct + '%';
-    document.getElementById('progresso-txt').textContent = pct < 100 ? 'Preenchendo dados obrigatórios...' : '✔ Dados obrigatórios completos';
-  }
-
-  // SUBMIT
-  document.getElementById('formulario').addEventListener('submit', async function(e) {
-    e.preventDefault();
-    const btn = document.querySelector('.btn-submit');
-    btn.textContent = 'Enviando...';
-    btn.disabled = true;
-    try {
-      const formData = new FormData(this);
-      const resp = await fetch(this.action, { method: 'POST', body: formData, headers: { 'Accept': 'application/json' } });
-      if (resp.ok) {
-        document.getElementById('sucesso-overlay').classList.add('ativo');
-        this.reset();
-        atualizarProgresso();
-      } else {
-        alert('Erro ao enviar. Verifique sua conexão e tente novamente.');
-      }
-    } catch {
-      alert('Erro de rede. Verifique sua conexão e tente novamente.');
-    }
-    btn.textContent = 'Enviar Informações ao PPGATS';
-    btn.disabled = false;
+/* ============ INIT ============ */
+document.getElementById('stTotal').textContent = QUESTIONS.length;
+(function initChips(){
+  const c = document.getElementById('temaChips');
+  Object.entries(TEMAS).forEach(([k,v])=>{
+    const n = QUESTIONS.filter(q=>q.t===k).length;
+    const el = document.createElement('button');
+    el.className='chip on'; el.style.setProperty('--tag',v.cor);
+    el.innerHTML=`<span class="dot"></span>${v.nome} <span style="opacity:.6;font-weight:700">(${n})</span>`;
+    el.onclick=()=>{ if(selTemas.has(k)){selTemas.delete(k);el.classList.remove('on');} else {selTemas.add(k);el.classList.add('on');} refreshNums(); };
+    c.appendChild(el);
   });
+})();
+function refreshNums(){
+  const avail = QUESTIONS.filter(q=>selTemas.has(q.t)).length;
+  const sel = document.getElementById('numSel'); sel.innerHTML='';
+  const opts = [5,10,15,20].filter(n=>n<avail); opts.push(avail);
+  const uniq=[...new Set(opts)];
+  if(!uniq.includes(numChoice)) numChoice = uniq[Math.min(2,uniq.length-1)];
+  uniq.forEach(n=>{
+    const b=document.createElement('button'); b.className='numbtn'+(n===numChoice?' on':'');
+    b.textContent = n===avail? `Todas (${avail})` : n;
+    b.onclick=()=>{ numChoice=n; refreshNums(); };
+    sel.appendChild(b);
+  });
+  document.getElementById('startBtn').disabled = avail===0;
+}
+refreshNums();
+function setMode(m){ mode=m; document.querySelectorAll('.mode').forEach(el=>el.classList.toggle('on',el.dataset.mode===m)); }
 
-  function fecharSucesso() {
-    document.getElementById('sucesso-overlay').classList.remove('ativo');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+/* ============ FLUXO ============ */
+function shuffle(a){ for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} return a; }
+function buildPool(list){
+  let base = list ? list : QUESTIONS.filter(q=>selTemas.has(q.t));
+  if(document.getElementById('shuffleChk').checked) base=shuffle([...base]); else base=[...base];
+  if(!list) base = base.slice(0, numChoice);
+  pool = base.map(q=>{
+    let order=[0,1,2,3];
+    if(document.getElementById('shuffleChk').checked) order=shuffle(order);
+    return {ref:q, order, correctPos:order.indexOf(q.c)};
+  });
+}
+function startQuiz(){
+  if(selTemas.size===0) return;
+  buildPool(null);
+  idx=0; score=0; results=[];
+  show('quiz'); renderQ();
+}
+function show(id){ ['start','quiz','results'].forEach(s=>document.getElementById(s).classList.toggle('hide',s!==id)); window.scrollTo({top:0,behavior:'smooth'}); }
+function toStart(){ show('start'); }
+
+function renderQ(){
+  answered=false;
+  const item=pool[idx], q=item.ref;
+  document.getElementById('qcount').textContent=`Questão ${idx+1} de ${pool.length}`;
+  document.getElementById('qscore').textContent=`Acertos: ${score}`;
+  const tg=document.getElementById('qtema'); tg.textContent=TEMAS[q.t].nome; tg.style.setProperty('--tag',TEMAS[q.t].cor); tg.style.background=TEMAS[q.t].cor;
+  document.getElementById('prog').style.width=`${(idx)/pool.length*100}%`;
+  document.getElementById('qtext').textContent=q.q;
+  const box=document.getElementById('opts'); box.innerHTML='';
+  const letters=['A','B','C','D'];
+  item.order.forEach((origIdx,pos)=>{
+    const b=document.createElement('button'); b.className='opt'; b.dataset.pos=pos;
+    b.innerHTML=`<span class="letter">${letters[pos]}</span><span>${q.o[origIdx]}</span>`;
+    b.onclick=()=>answer(pos);
+    box.appendChild(b);
+  });
+  document.getElementById('explain').classList.remove('show');
+  document.getElementById('nextBtn').classList.add('hide');
+  document.getElementById('hint').classList.remove('hide');
+}
+function answer(pos){
+  if(answered) return; answered=true;
+  const item=pool[idx], q=item.ref, correct=item.correctPos;
+  const correctNow = pos===correct;
+  if(correctNow) score++;
+  results.push({q, chosen:pos, correct, correctNow, order:item.order});
+  const opts=document.querySelectorAll('#opts .opt');
+  opts.forEach(o=>{
+    o.classList.add('locked');
+    const p=+o.dataset.pos;
+    if(mode==='estudo'){
+      if(p===correct){ o.classList.add('correct'); o.querySelector('.mark')||o.insertAdjacentHTML('beforeend','<span class="mark" style="color:var(--ok)">✔</span>'); }
+      else if(p===pos){ o.classList.add('wrong'); o.insertAdjacentHTML('beforeend','<span class="mark" style="color:var(--bad)">✕</span>'); }
+      else o.classList.add('dim');
+    } else {
+      if(p===pos) o.style.borderColor='var(--primary)', o.style.background='var(--tealTint)';
+    }
+  });
+  document.getElementById('qscore').textContent=`Acertos: ${score}`;
+  document.getElementById('prog').style.width=`${(idx+1)/pool.length*100}%`;
+  if(mode==='estudo'){
+    const ex=document.getElementById('explain');
+    document.getElementById('exIcon').textContent = correctNow?'✔':'✕';
+    const v=document.getElementById('exVerdict');
+    v.textContent = correctNow? `Correto — alternativa ${['A','B','C','D'][correct]}` : `Resposta correta: alternativa ${['A','B','C','D'][correct]}`;
+    v.className = 'ans'+(correctNow?'':' no');
+    document.getElementById('exText').textContent=q.e;
+    ex.classList.add('show');
   }
+  document.getElementById('hint').classList.add('hide');
+  const nb=document.getElementById('nextBtn'); nb.classList.remove('hide');
+  nb.textContent = idx===pool.length-1? 'Ver resultado ▸' : 'Próxima ▸';
+  nb.focus();
+}
+function nextQ(){ if(!answered) return; if(idx<pool.length-1){ idx++; renderQ(); } else finish(); }
 
-  // INIT — criar primeiro bloco
-  adicionarProjeto();
+function finish(){
+  const total=pool.length, pct=Math.round(score/total*100);
+  document.getElementById('rPct').textContent=pct;
+  document.getElementById('rRaw').textContent=`${score} de ${total}`;
+  document.getElementById('rMode').textContent=mode;
+  const msgs = pct>=90?"Excelente domínio do conteúdo!":pct>=70?"Bom desempenho — revise os pontos marcados.":pct>=50?"No caminho: vale reforçar os temas mais fracos.":"Hora de revisar o material da aula com calma.";
+  document.getElementById('rMsg').textContent=msgs;
+  // bars por tema
+  const byTema={}; results.forEach(r=>{ const k=r.q.t; (byTema[k]=byTema[k]||{ok:0,n:0}); byTema[k].n++; if(r.correctNow)byTema[k].ok++; });
+  const bars=document.getElementById('bars'); bars.innerHTML='';
+  Object.keys(TEMAS).forEach(k=>{ if(!byTema[k])return; const d=byTema[k]; const p=Math.round(d.ok/d.n*100);
+    bars.insertAdjacentHTML('beforeend',`<div class="bar"><div class="row"><span>${TEMAS[k].nome}</span><span><b>${d.ok}/${d.n}</b> · ${p}%</span></div><div class="track"><div class="fill" style="width:${p}%;background:${TEMAS[k].cor}"></div></div></div>`);
+  });
+  // revisão
+  const rev=document.getElementById('review'); rev.innerHTML='';
+  const letters=['A','B','C','D'];
+  results.forEach((r,i)=>{
+    const q=r.q; const yourTxt=q.o[r.order[r.chosen]]; const corrTxt=q.o[q.c];
+    rev.insertAdjacentHTML('beforeend',
+      `<div class="rev ${r.correctNow?'ok':''}">
+        <div class="tt" style="--tag:${TEMAS[q.t].cor};color:${TEMAS[q.t].cor}">${TEMAS[q.t].nome}</div>
+        <div class="q">${i+1}. ${q.q}</div>
+        ${r.correctNow? `<div class="line cor">✔ Você acertou: ${corrTxt}</div>` :
+          `<div class="line you">✕ Sua resposta: ${yourTxt}</div><div class="line cor">✔ Correta: ${corrTxt}</div>`}
+        <div class="cm">${q.e}</div>
+      </div>`);
+  });
+  const wrong = results.filter(r=>!r.correctNow).length;
+  document.getElementById('redoWrong').style.display = wrong? 'inline-flex':'none';
+  show('results');
+}
+function restart(which){
+  if(which==='wrong'){ const wrongQs=results.filter(r=>!r.correctNow).map(r=>r.q); if(!wrongQs.length){toStart();return;} buildPool(wrongQs); }
+  else buildPool(null);
+  idx=0; score=0; results=[]; show('quiz'); renderQ();
+}
+/* teclado */
+document.addEventListener('keydown',e=>{
+  if(document.getElementById('quiz').classList.contains('hide')) return;
+  if(['1','2','3','4'].includes(e.key)){ const pos=+e.key-1; const b=document.querySelector(`#opts .opt[data-pos="${pos}"]`); if(b&&!answered) b.click(); }
+  else if(e.key==='Enter' && answered){ nextQ(); }
+});
 </script>
 </body>
 </html>
